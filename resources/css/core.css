@@ -1,0 +1,27 @@
+/*body 
+{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+*/
+
+body {
+	background-color: #1abc9c;
+}
+
+.table-mini td {
+	font-size: 12px;
+}
+
+.form-control.mini {
+	height: 28px;
+}
+
+.navbar {
+	border-radius: 0px;
+}
