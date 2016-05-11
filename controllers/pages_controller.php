@@ -19,7 +19,11 @@
 		}
 
 		public static function error() {
-			View::render('pages/error');
+			View::render('pages/error',[]);
+		}
+
+		public static function order() {
+			View::render('pages/order',[]);
 		}
 
 	}
