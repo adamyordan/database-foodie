@@ -30,5 +30,9 @@
 			View::render('pages/purchaseList',[]);
 		}
 
+		public static function orderDetail() {
+			View::render('pages/order-detail',[]);
+		}
+
 	}
 ?>
