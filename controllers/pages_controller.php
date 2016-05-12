@@ -25,6 +25,10 @@
 		public static function order() {
 			View::render('pages/order',[]);
 		}
+		
+		public static function purchaseList() {
+			View::render('pages/purchaseList',[]);
+		}
 
 	}
 ?>
