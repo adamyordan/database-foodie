@@ -44,11 +44,13 @@
 		}
 
 		public static function menu() {
-			View::render('pages/menu',[]);
+			$user = self::checkAuth();
+			View::render('pages/menu',['user' => $user]);
 		}
 
 		public static function menuDetail() {
-			View::render('pages/menu-detail',[]);
+			$user = self::checkAuth();
+			View::render('pages/menu-detail',['user' => $user]);
 		}		
 
 	}

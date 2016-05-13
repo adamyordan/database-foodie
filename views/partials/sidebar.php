@@ -11,15 +11,9 @@
 
 			<div class="list-group">
 				<a href="?p=look" class="list-group-item">Home</a>
-<<<<<<< HEAD
-				<?php if ($data['user']->job == "Chef" 
-						   || $data['user']->job == "Kasir" 
-						   || $data['user']->job == "Manager") : ?>
-					<a href="#" class="list-group-item">Menu</a>
-=======
-				<?php if ($job == "Chef" || $job == "Kasir") : ?>
+				<?php if ($data['user']->job == "Chef" || $data['user']->job == "Kasir" || 
+					$data['user']->job == "Manager"): ?>
 					<a href="?p=menu" class="list-group-item">Menu</a>
->>>>>>> 295984ef345f7557f3f6a7128c7f3ca0cc0b207a
 				<?php endif;?>
 				
 				<?php if ($data['user']->job == "Kasir" || $data['user']->job == "Manager") : ?>
