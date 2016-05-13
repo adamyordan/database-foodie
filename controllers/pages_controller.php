@@ -34,6 +34,21 @@
 			View::render('pages/order-detail',['user' => $user]);
 		}
 
+		public static function menu() {
+			$user = self::checkAuth();
+			View::render('pages/menu',['user' => $user]);
+		}
+
+		public static function menuDetail() {
+			$user = self::checkAuth();
+			View::render('pages/menu-detail',['user' => $user]);
+		}		
+		
+		public static function purchaseDetail() {
+			$user = self::checkAuth();
+			View::render('pages/purchase-detail',['user' => $user]);
+		}
+
 		// non route methods
 		private static function checkAuth() {
 			if(empty($_SESSION['login_user'])){
@@ -43,13 +58,6 @@
 			return User::find($login_user_email);			
 		}
 
-		public static function menu() {
-			View::render('pages/menu',[]);
-		}
-
-		public static function menuDetail() {
-			View::render('pages/menu-detail',[]);
-		}		
 
 	}
 ?>
