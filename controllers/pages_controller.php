@@ -33,6 +33,9 @@
 		public static function orderDetail() {
 			View::render('pages/order-detail',[]);
 		}
-
+		
+		public static function purchaseDetail() {
+			View::render('pages/purchase-detail',[]);
+		}
 	}
 ?>
