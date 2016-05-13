@@ -34,5 +34,13 @@
 			View::render('pages/order-detail',[]);
 		}
 
+		public static function menu() {
+			View::render('pages/menu',[]);
+		}
+
+		public static function menuDetail() {
+			View::render('pages/menu-detail',[]);
+		}		
+
 	}
 ?>

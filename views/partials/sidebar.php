@@ -15,7 +15,7 @@
 			<div class="list-group">
 				<a href="?p=look" class="list-group-item">Home</a>
 				<?php if ($job == "Chef" || $job == "Kasir") : ?>
-					<a href="#" class="list-group-item">Menu</a>
+					<a href="?p=menu" class="list-group-item">Menu</a>
 				<?php endif;?>
 				
 				<?php if ($job == "Kasir") : ?>
