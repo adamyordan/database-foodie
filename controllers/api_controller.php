@@ -41,7 +41,6 @@
 		}
 
 		public static function api_purchase_insert() {
-			if (isset($_SESSION['login_user']))
 		}
 
 	}
