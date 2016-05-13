@@ -9,7 +9,7 @@
 				<h5>Foodie - List Pemesanan</h5>
 				<small>Urutkan Berdasarkan -- [Waktu Pesan/Nomor Nota/Kasir] [Asc/Desc]</small>
 					<div>
-						<small>Tanggal : <input type="text" class="datePicker"></small>
+						<small>Tanggal : <input type="text" class="datePicker" value="<?php echo date('d/m/Y'); ?>"></small>
 					</div>
 				<table class="table table-mini page page1 page-active">
 					<thead>
@@ -29,8 +29,8 @@
 						<tr> 
 							<td scope="row"><?php echo $i; ?></th> 
 							<td>ABC777</td> 
-							<td>05/05/2016 15:09</td> 
-							<td>05/05/2016 15:09</td> 
+							<td><?php echo date('d/m/Y');?> 15:09</td> 
+							<td><?php echo date('d/m/Y');?> 15:09</td> 
 							<td>60,000</td> 
 							<td>Anto</td> 
 							<td>Tunai</td>
@@ -39,8 +39,8 @@
 						<tr> 
 							<td scope="row"><?php echo $i+1; ?></th> 
 							<td>ABC756</td> 
-							<td>05/05/2016 15:09</td> 
-							<td>05/05/2016 15:09</td> 
+							<td><?php echo date('d/m/Y');?> 15:09</td> 
+							<td><?php echo date('d/m/Y');?> 15:09</td> 
 							<td>130,000</td> 
 							<td>Budi</td> 
 							<td>Debit</td>
@@ -68,8 +68,8 @@
 						<tr> 
 							<td scope="row"><?php echo $i; ?></th> 
 							<td>A1234C</td> 
-							<td>05/05/2016 15:09</td> 
-							<td>05/05/2016 15:09</td> 
+							<td><?php echo date('d/m/Y');?> 15:09</td> 
+							<td><?php echo date('d/m/Y');?> 15:09</td> 
 							<td>60,000</td> 
 							<td>Anto</td> 
 							<td>Tunai</td>
@@ -78,8 +78,8 @@
 						<tr> 
 							<td scope="row"><?php echo $i+1; ?></th> 
 							<td>BBBB25</td> 
-							<td>05/05/2016 15:09</td> 
-							<td>05/05/2016 15:09</td> 
+							<td><?php echo date('d/m/Y');?> 15:09</td> 
+							<td><?php echo date('d/m/Y');?> 15:09</td> 
 							<td>130,000</td> 
 							<td>Budi</td> 
 							<td>Debit</td>
