@@ -6,5 +6,7 @@ $(document).ready (function () {
 		$('.page'+$num).addClass('page-active');
 		$(this).parent().addClass('active');
 	});
+
+	$('.datePicker').datepicker();
 });
 
