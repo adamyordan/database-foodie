@@ -21,7 +21,7 @@
 				<?php endif;?>
 				
 				<?php if ($data['user']->job == "Staf" || $data['user']->job == "Manager") : ?>
-					<a href="?p=purchaselist" class="list-group-item">Bahan Makanan</a>
+					<a href="?p=purchaselist" class="list-group-item">List Pembelian Bahan</a>
 				<?php endif;?>
 				
 				<?php if ($data['user']->job == "Staf" || $data['user']->job == "Manager") : ?>

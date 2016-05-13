@@ -10,7 +10,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						 <small>Nomor Nota : XYZ000</small><br>
-						 <small>Waktu      : 05/05/2016 12:00</small><br>
+						 <small>Waktu      : 05/05/2016 12:00:00</small><br>
 						 <small>Supplier   : Molly Special</small><br>
 					</div>
 

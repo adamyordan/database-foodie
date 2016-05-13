@@ -7,10 +7,10 @@
 		<div class="col-md-12">
 			<div class="well">
 				<h5>Foodie - List Pembelian Bahan</h5>
-				<small>Urutkan Berdasarkan -- [Waktu Pesan/Nomor Nota/Kasir] [Asc/Desc]</small>
-				<div>
-					<small>Tanggal : 05/05/2016</small>
-				</div>
+				<small>Urutkan Berdasarkan -- [<a>Waktu Pesan</a>/<a>Nomor Nota</a>/<a>Kasir</a>] [<a>Asc</a>/<a>Desc</a>]</small>
+					<div>
+						<small>Tanggal : <input type="text" class="datePicker" value="<?php echo date('d/m/Y'); ?>"></small>
+					</div>
 				<table class="table table-mini page page1 page-active">
 					<thead>
 						<tr>
@@ -25,7 +25,7 @@
 						<?php for ($i = 30; $i >= 16; $i = $i-1): ?>
 						<tr>
 							<td>XYZ0<?php echo sprintf('%02d',$i)?></td>
-							<td>05/05/2016 12:<?php echo sprintf('%02d',$i)?></td>
+							<td>05/05/2016 12:<?php echo sprintf('%02d',$i)?>:00</td>
 							<td>Molly Special</td>
 							<td>Olivia Domenica</td>
 							<td><a href="?p=purchaseDetail">RINCIAN</a></td>
@@ -45,7 +45,7 @@
 					<?php for ($i = 15; $i >= 1; $i = $i-1): ?>
 					<tr>
 						<td>XYZ0<?php echo sprintf('%02d',$i)?></td>
-						<td>05/05/2016 12:<?php echo sprintf('%02d',$i)?></td>
+						<td>05/05/2016 12:<?php echo sprintf('%02d',$i)?>:00</td>
 						<td>Hilda Soda</td>
 						<td>Faye Molly</td>
 						<td><a href="?p=purchaseDetail">RINCIAN</a></td>
