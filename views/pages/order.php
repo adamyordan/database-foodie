@@ -9,7 +9,7 @@
 				<h5>Foodie - List Pemesanan</h5>
 				<small>Urutkan Berdasarkan -- [Waktu Pesan/Nomor Nota/Kasir] [Asc/Desc]</small>
 					<div>
-						<small>Tanggal : 05/05/2016</small>
+						<small>Tanggal : <input type="date"></small>
 					</div>
 				<table class="table table-mini page page1 page-active">
 					<thead>
