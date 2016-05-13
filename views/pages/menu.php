@@ -34,7 +34,7 @@
 							<td>20,000</td> 
 							<td>32</td> 
 							<td>Makanan</td> 
-							<td><a href="#">Lihat</a></td>
+							<td><a href="?p=menuDetail">Lihat</a></td>
 						</tr> 
 						<tr> 
 							<td scope="row"><?php echo $i+1; ?></th> 
@@ -43,7 +43,7 @@
 							<td>5,000</td> 
 							<td>73</td> 
 							<td>Minuman</td> 
-							<td><a href="#">Lihat</a></td>
+							<td><a href="?p=menuDetail">Lihat</a></td>
 						</tr>
 						<?php endfor; ?>
 					</tbody> 
@@ -70,7 +70,7 @@
 							<td>2,000</td> 
 							<td>20</td> 
 							<td>Makanan</td> 
-							<td><a href="#">Lihat</a></td>
+							<td><a href="?p=menuDetail">Lihat</a></td>
 						</tr> 
 						<tr> 
 							<td scope="row"><?php echo $i+1; ?></th> 
@@ -79,7 +79,7 @@
 							<td>1,000</td> 
 							<td>23</td> 
 							<td>Minuman</td> 
-							<td><a href="#">Lihat</a></td>
+							<td><a href="?p=menuDetail">Lihat</a></td>
 						</tr>
 						<?php endfor; ?>
 					</tbody> 
