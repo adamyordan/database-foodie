@@ -2,7 +2,7 @@
 	class PagesController {
 
 		public static function home() {
-			View::render('pages/home');
+			View::render('pages/home',[]);
 		}
 
 		public static function look() {

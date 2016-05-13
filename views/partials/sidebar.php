@@ -11,9 +11,16 @@
 
 			<div class="list-group">
 				<a href="?p=look" class="list-group-item">Home</a>
+<<<<<<< HEAD
 				<?php if ($data['user']->job == "Chef" || $data['user']->job == "Kasir" || 
 					$data['user']->job == "Manager"): ?>
 					<a href="?p=menu" class="list-group-item">Menu</a>
+=======
+				<?php if ($data['user']->job == "Chef" 
+						   || $data['user']->job == "Kasir" 
+						   || $data['user']->job == "Manager") : ?>
+					<a href="#" class="list-group-item">Menu</a>
+>>>>>>> origin/geraldo
 				<?php endif;?>
 				
 				<?php if ($data['user']->job == "Kasir" || $data['user']->job == "Manager") : ?>
@@ -35,7 +42,7 @@
 		</div>
 	</div>
 </div>
-
+<!--
 <script>
 	$('#btn_logout').click(function() {
 
@@ -51,4 +58,4 @@
         );
 
 	});
-</script>
+</script>-->
