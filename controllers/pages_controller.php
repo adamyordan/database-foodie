@@ -52,6 +52,10 @@
 			$user = self::checkAuth();
 			View::render('pages/menu-detail',['user' => $user]);
 		}		
-
+		
+		public static function purchaseDetail() {
+			$user = self::checkAuth();
+			View::render('pages/purchase-detail',['user' => $user]);
+		}
 	}
 ?>
