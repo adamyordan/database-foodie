@@ -22,6 +22,10 @@ body {
 	height: 28px;
 }
 
+.form-control.mini.nodisable {
+	color: black;
+}
+
 .navbar {
 	border-radius: 0px;
 }

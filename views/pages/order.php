@@ -7,7 +7,7 @@
 		<div class="col-md-12">
 			<div class="well">
 				<h5>Foodie - List Pemesanan</h5>
-				<small>Urutkan Berdasarkan -- [Waktu Pesan/Nomor Nota/Kasir] [Asc/Desc]</small>
+				<small>Urutkan Berdasarkan -- [<a>Waktu Pesan</a>/<a>Nomor Nota</a>/<a>Kasir</a>] [<a>Asc</a>/<a>Desc</a>]</small>
 					<div>
 						<small>Tanggal : <input type="text" class="datePicker" value="<?php echo date('d/m/Y'); ?>"></small>
 					</div>
@@ -25,22 +25,22 @@
 						</tr>
 					</thead>
 					<tbody> 
-						<?php for($i = 1; $i <= 15; $i+=2): ?>
 						<tr> 
-							<td scope="row"><?php echo $i; ?></th> 
+							<td scope="row"><?php echo 1; ?></th> 
 							<td>ABC777</td> 
-							<td><?php echo date('d/m/Y');?> 15:09</td> 
-							<td><?php echo date('d/m/Y');?> 15:09</td> 
+							<td><?php echo date('d/m/Y H:i:s');?></td> 
+							<td><?php echo date('d/m/Y H:i:s');?> </td> 
 							<td>60,000</td> 
 							<td>Anto</td> 
 							<td>Tunai</td>
 							<td><a href="?p=orderDetail">Lihat</a></td>
-						</tr> 
+						</tr>
+						<?php for($i = 2; $i <= 15; $i+=1): ?> 
 						<tr> 
-							<td scope="row"><?php echo $i+1; ?></th> 
+							<td scope="row"><?php echo $i; ?></th> 
 							<td>ABC756</td> 
-							<td><?php echo date('d/m/Y');?> 15:09</td> 
-							<td><?php echo date('d/m/Y');?> 15:09</td> 
+							<td><?php echo date('d/m/Y');?> 15:<?php echo 59 - $i;?>:24</td> 
+							<td><?php echo date('d/m/Y');?> 15:<?php echo 59 -$i -1;?>:24</td>  
 							<td>130,000</td> 
 							<td>Budi</td> 
 							<td>Debit</td>
@@ -64,22 +64,22 @@
 						</tr>
 					</thead>
 					<tbody> 
-						<?php for($i = 16; $i <= 30; $i+=2): ?>
 						<tr> 
-							<td scope="row"><?php echo $i; ?></th> 
+							<td scope="row"><?php echo 16; ?></th> 
 							<td>A1234C</td> 
-							<td><?php echo date('d/m/Y');?> 15:09</td> 
-							<td><?php echo date('d/m/Y');?> 15:09</td> 
+							<td><?php echo date('d/m/Y H:i:s');?> </td> 
+							<td><?php echo date('d/m/Y H:i:s');?> </td> 
 							<td>60,000</td> 
 							<td>Anto</td> 
 							<td>Tunai</td>
 							<td><a href="?p=orderDetail">Lihat</a></td>
 						</tr> 
+						<?php for($i = 17; $i < 30; $i+=1): ?>
 						<tr> 
 							<td scope="row"><?php echo $i+1; ?></th> 
 							<td>BBBB25</td> 
-							<td><?php echo date('d/m/Y');?> 15:09</td> 
-							<td><?php echo date('d/m/Y');?> 15:09</td> 
+							<td><?php echo date('d/m/Y');?> 15:<?php echo 59 - $i;?>:24</td> 
+							<td><?php echo date('d/m/Y');?> 15:<?php echo 59 - $i;?>:24</td> 
 							<td>130,000</td> 
 							<td>Budi</td> 
 							<td>Debit</td>

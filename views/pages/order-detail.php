@@ -10,8 +10,8 @@
 				<div class="row">
 					<div class="col-md-6">
 						 <small>Nomor Nota : ABC777</small><br>
-						 <small>Waktu Pesan : 05/05/2016 15:09</small><br>
-						 <small>Waktu Bayar : 05/05/2016 15:09</small><br>
+						 <small>Waktu Pesan : <?php echo date('d/m/Y H:i:s');?> </small><br>
+						 <small>Waktu Bayar : <?php echo date('d/m/Y H:i:s');?> </small><br>
 					</div>
 
 					<div class="col-md-6">
@@ -33,7 +33,7 @@
 							<?php for($i = 1; $i <= 1; $i+=2): ?>
 							<tr> 
 								<td scope="row"><?php echo $i; ?></th> 
-								<td>ABC777</td> 
+								<td>Ayam Goreng</td> 
 								<td>20,000</td> 
 								<td>3</td> 
 								<td>60,000</td> 
