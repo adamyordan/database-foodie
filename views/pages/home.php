@@ -3,7 +3,7 @@
     	<div class="login-form">
             <form action="?p"></form>
             <div class="form-group">
-	            <input type="text" class="form-control login-field" value="" placeholder="Enter your name" id="login_name">
+	            <input type="text" class="form-control login-field" value="" placeholder="Enter your email" id="login_name">
     	        <label class="login-field-icon fui-user" for="login-name"></label>
             </div>
 

@@ -101,18 +101,25 @@
 								<td>3000</td>
 							</tr>
 							<tr>
-								<td>Ayam</td>
-								<td>1000</td>
-								<td>kg</td>
-								<td>3</td>
-								<td>3000</td>
+								<td>Sapi</td>
+								<td>1500</td>
+								<td>lbs</td>
+								<td>5</td>
+								<td>7500</td>
 							</tr>
 							<tr>
-								<td>Ayam</td>
-								<td>1000</td>
+								<td>Telur</td>
+								<td>200</td>
 								<td>kg</td>
-								<td>3</td>
-								<td>3000</td>
+								<td>10</td>
+								<td>2000</td>
+							</tr>
+							<tr>
+								<td><b>Total</b></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><b>12500</b></td>
 							</tr>
 						</tbody>
 					</table>
