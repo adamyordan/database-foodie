@@ -4,46 +4,33 @@
 		public $email;
 		public $name;
 		public $address;
+		public $password;
 		public $role;
+		public $job;
 
 		private function __clone() {}
 
 		private function __construct() {}
 
 		public static function find($email) {
-			$user = new User();
-			if ($email == "adam.jordan@ui.ac.id") {
-				$user->email = "adam.jordan@ui.ac.id";
-				$user->name  = "Adam Jordan";
-				$user->address = "Jakarta Kota";
-				$user->role = "MG";
-				$user->job  = "Manager";
-			} else if ($email == "geraldo@ui.ac.id") {
-				$user->email = "geraldo@ui.ac.id";
-				$user->name  = "Geraldo";
-				$user->address = "Jakarta Kota";
-				$user->role = "KA";
-				$user->job  = "Kasir";
-			} else if ($email == "muhammad.zaky@ui.ac.id") {
-				$user->email = "muhammad.zaky@ui.ac.id";
-				$user->name  = "Muhammad Zaky";
-				$user->address = "Jakarta Kota";
-				$user->role = "ST";
-				$user->job  = "Staf";
-			} else if ($email == "falah.prasetyo@ui.ac.id") {
-				$user->email = "falah.prasetyo@ui.ac.id";
-				$user->name  = "Falah Prasetyo";
-				$user->address = "Jakarta Kota";
-				$user->role = "CH";
-				$user->job  = "Chef";
+			$result = DB::query("SELECT * FROM USERS WHERE email='$email'");
+			if($result == false || $result->rowCount() == 0) {
+				return null;
 			} else {
-				$user->email = "adam.jordan@ui.ac.id";
-				$user->name  = "Adam Jordan";
-				$user->address = "Jakarta Kota";
-				$user->role = "MG";
-				$user->job  = "Manager";				
+				$row = $result->fetchAll()[0];
+				$user = new User();
+				$user->email = $row['email'];
+				$user->name  = $row['nama'];
+				$user->address = $row['alamat'];
+				$user->password = $row['password'];				
+				$user->role = $row['role'];
+				if      ($user->role == 'MG') $user->job = "Manager";
+				else if ($user->role == 'KS') $user->job = "Kasir";
+				else if ($user->role == 'CH') $user->job = "Chef";
+				else if ($user->role == 'ST') $user->job = "Staf";
+				return $user;
 			}
-			return $user;
+
 		}
 	}
 ?>

@@ -4,16 +4,25 @@
 	class ApiController {
 
 		public static function api_login() {
-			if(isset($_POST['email']) && isset($_POST['password'])) {
+			$ok = true;
+			if (!isset($_POST['email']) || !isset($_POST['password'])) {
+				$ok = false;
+			} else {
 				$email = $_POST['email'];
 				$password = $_POST['password'];
 				$user = User::find($email);
-				$data = new stdClass();
-				$data->status = "ok";
-				$data->user   = $user;
-				$_SESSION['login_user'] = $user->email;
-				View::json($data);				
-			} else {
+				if ($user == null || $user->password != $password) {
+					$ok = false;
+				} else {
+					$data = new stdClass();
+					$data->status = "ok";
+					$data->user   = $user;
+					$_SESSION['login_user'] = $user->email;
+					View::json($data);				
+				}
+			}
+
+			if ($ok == false) {
 				$data = new stdClass();
 				$data->status = "failed";
 				View::json($data);

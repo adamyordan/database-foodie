@@ -26,7 +26,9 @@
             "?p=api_login",
             {"email" : $("#login_name").val(), "password" : $("#login_pass").val()},
             function(data) {
-                window.location.href = "index.php?p=look";
+                if (data.status == "ok") {
+                    window.location.href = "index.php?p=look";
+                }
             },
             "json"
         );
