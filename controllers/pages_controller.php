@@ -1,7 +1,13 @@
 <?php
+	require_once('model/supplier.php');
+	require_once('model/material.php');
+
 	class PagesController {
 
 		public static function home() {
+			if(!empty($_SESSION['login_user'])){
+				header('Location: index.php?p=look');
+			}
 			View::render('pages/home',[]);
 		}
 
@@ -12,7 +18,13 @@
 
 		public static function purchase() {
 			$user = self::checkAuth();
-			View::render('pages/purchase', ['user' => $user]);
+			$suppliers = Supplier::all();
+			$materials = Material::all();
+			View::render('pages/purchase', [
+				'user' => $user,
+				'suppliers' => $suppliers,
+				'materials' => $materials
+				]);
 		}
 
 		public static function error() {

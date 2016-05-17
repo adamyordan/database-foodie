@@ -14,7 +14,9 @@
 
             <button id="btn_login" class="btn btn-primary btn-lg btn-block">Log in</button>
 	    </div>
-
+        <br>
+        <div id="login-msg-container">
+        </div>
 	</div>
 </div>
 
@@ -27,7 +29,21 @@
             {"email" : $("#login_name").val(), "password" : $("#login_pass").val()},
             function(data) {
                 if (data.status == "ok") {
-                    window.location.href = "index.php?p=look";
+                    $(`
+                        <div class="alert alert-success">
+                            <strong>Login success,</strong> redirecting...
+                        </div>
+                    `).fadeIn(200).prependTo('#login-msg-container');
+                    setTimeout(function() {
+                      window.location.href = "?p=look";
+                    }, 1000);
+                } else {
+                    $(`
+                        <div class="alert alert-danger">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Failed!</strong> Login Failed
+                        </div>
+                    `).fadeIn(200).prependTo('#login-msg-container');
                 }
             },
             "json"

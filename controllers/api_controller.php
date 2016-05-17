@@ -50,6 +50,18 @@
 		}
 
 		public static function api_purchase_insert() {
+			$no_nota = $_POST['no_nota'];
+			$times   = 'now()';
+			$supplier = $_POST['supplier'];
+			$staf = $_POST['staf?'];
+
+			$mnames  = $_POST['mname'];
+			$mprices = $_POST['mprice'];
+			$munits  = $_POST['munit'];
+			$mqtys   = $_POST['mqty'];
+			$mtotals = $_POST['mtotal'];
+
+
 		}
 
 	}

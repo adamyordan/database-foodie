@@ -19,8 +19,9 @@
 						<label for="inputPassword3" class="col-sm-2 control-label">Supplier</label>
 						<div class="col-sm-10">
 							<select class="selected-2 form-control mini">
-						    	<option value="AL">PD makmur sentosa</option>
-								<option value="WY">Fasilkom UI</option>
+								<?php foreach($data['suppliers'] as $supplier): ?>
+									<option> <?php echo $supplier->name; ?> </option>
+								<?php endforeach; ?>
 							</select>
 						</div>
 					</div>
@@ -157,19 +158,20 @@
 			<tr id="row_bahan_` + i + `">
 				<td>
 					<select class="selected-2 form-control mini">
-					  <option value="AL">Ayam</option>
-					  <option value="WY">Kambing</option>
+						<?php foreach($data['materials'] as $material): ?>
+							<option> <?php echo $material->name; ?> </option>
+						<?php endforeach; ?>
 					</select>
 				</td>
-				<td><input id="row_hargasatuan_` + i + `" onkeyup="calculate_total(` + i + `)" type="number" min="0" class="form-control mini"></td>
+				<td><input id="row_hargasatuan_` + i + `" onkeyup="calculate_total(` + i + `)" type="number" min="0" value="0" class="form-control mini"></td>
 				<td>
 					<select class="selected-2 form-control mini">
 					  <option value="AL">kg</option>
 					  <option value="WY">lbs</option>
 					</select>
 				</td>
-				<td><input id="row_jumlah_` + i + `" onkeyup="calculate_total(` + i + `)" type="number" min="0" class="form-control mini"></td>
-				<td><input id="row_total_` + i + `" onkeyup="calculate_total(` + i + `)" type="number" min="0" class="form-control mini nodisable" disabled></td>
+				<td><input id="row_jumlah_` + i + `" onkeyup="calculate_total(` + i + `)" type="number" min="0" value="0" class="form-control mini"></td>
+				<td><input id="row_total_` + i + `" onkeyup="calculate_total(` + i + `)" type="number" min="0" value="0" class="form-control mini nodisable" disabled></td>
 				<td>
 					<button onclick="delete_row(` + i + `)"
 					 type="button" class="btn btn-danger btn-xs">Delete</button>
