@@ -8,7 +8,7 @@
 
 			<div class="well">
 			<h5>Foodie - List Menu</h5>
-				<small>Urutkan Berdasarkan -- [<a>Waktu Pesan</a>/<a>Nomor Nota</a>/<a>Kasir</a>] [<a>Asc</a>/<a>Desc</a>]</small>
+				<small>Urutkan Berdasarkan -- [<a>Nama</a>/<a>Harga</a>/<a>Kategori</a>] [<a>Asc</a>/<a>Desc</a>]</small>
 					<div>
 						<small>Tanggal : <input type="text" class="datePicker" value="<?php echo date('d/m/Y'); ?>"></small>
 					</div>
