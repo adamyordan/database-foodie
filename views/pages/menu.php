@@ -13,7 +13,7 @@
 						<small>Tanggal : <input type="text" class="datePicker" value="<?php echo date('d/m/Y'); ?>"></small>
 					</div>
 
-				<table class="table table-mini page page1 page-active">
+				<table class="table table-mini page page1 page-active">					
 					<thead>
 						<tr>
 							<th>#</th>
@@ -26,7 +26,19 @@
 						</tr>
 					</thead>
 					<tbody> 
-						<?php for($i = 1; $i <= 10; $i+=2): ?>
+						<?php $number = 1; ?>
+						<?php foreach($data['dmenus'] as $dmenu):?>
+							<tr>
+							<td> <?php echo $number++; ?> </td> 
+							<td> <?php echo $dmenu->name; ?> </td>
+							<td> <?php echo $dmenu->description; ?> </td>
+							<td> <?php echo $dmenu->price; ?> </td>
+							<td> <?php echo $dmenu->amount; ?> </td>
+							<td> <?php echo $dmenu->category; ?> </td>
+							<td><a href="?p=menuDetail">Lihat</a></td>
+							</tr>
+						<?php endforeach; ?>
+						<!-- <?php for($i = 1; $i <= 10; $i+=2): ?>
 						<tr> 
 							<td scope="row"><?php echo $i; ?></th> 
 							<td>Ayam Bakar</td> 
@@ -45,7 +57,7 @@
 							<td>Minuman</td> 
 							<td><a href="?p=menuDetail">Lihat</a></td>
 						</tr>
-						<?php endfor; ?>
+						<?php endfor; ?> -->
 					</tbody> 
 				</table>
 

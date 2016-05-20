@@ -1,6 +1,7 @@
 <?php
 	require_once('model/supplier.php');
 	require_once('model/material.php');
+	require_once('model/menu.php');
 
 	class PagesController {
 
@@ -48,12 +49,24 @@
 
 		public static function menu() {
 			$user = self::checkAuth();
-			View::render('pages/menu',['user' => $user]);
+			$menus = Menu::all();
+			$dmenus = Menu::daily_menu();
+			View::render('pages/menu',[
+				'user' => $user, 
+				'menus' => $menus,
+				'dmenus' => $dmenus
+
+				]);
 		}
 
 		public static function menuDetail() {
 			$user = self::checkAuth();
-			View::render('pages/menu-detail',['user' => $user]);
+			$menudt = Menu::menu_detail();
+			View::render('pages/menu-detail',[
+				'user' => $user,
+				'menudt' => $menudt
+				]);
+
 		}		
 		
 		public static function purchaseDetail() {

@@ -5,7 +5,7 @@
 		private static $dbhost   = "localhost";
 		private static $dbport   = "5432";
 		private static $dbuser   = "postgres";
-		private static $dbpass   = "postgres";
+		private static $dbpass   = "root";
 
 		private function __construct() {}
 
