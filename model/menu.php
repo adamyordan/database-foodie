@@ -27,8 +27,8 @@
 		// 	}
 		// }
 
-		public static function menu_detail() {
-			$result = DB::query("SELECT * FROM MENU_HARIAN MH, MENU M WHERE namamenu = nama ORDER BY namamenu ASC LIMIT 10");
+		public static function menu_detail($name, $time) {
+			$result = DB::query("SELECT * FROM MENU_HARIAN MH, MENU M WHERE namamenu = nama AND nama = '$name' AND waktu = '$time' ORDER BY namamenu ASC LIMIT 10");
 			if($result == false || $result->rowCount() <= 0) {
 				 return null;				
 			} else {				

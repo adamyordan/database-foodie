@@ -60,8 +60,10 @@
 		}
 
 		public static function menuDetail() {
+			$name = urldecode ($_GET['name']);
+			$time = urldecode ($_GET['time']);
 			$user = self::checkAuth();
-			$menudt = Menu::menu_detail();
+			$menudt = Menu::menu_detail($name, $time);
 			View::render('pages/menu-detail',[
 				'user' => $user,
 				'menudt' => $menudt

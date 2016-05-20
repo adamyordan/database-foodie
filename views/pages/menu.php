@@ -9,9 +9,19 @@
 			<div class="well">
 			<h5>Foodie - List Menu</h5>
 				<small>Urutkan Berdasarkan -- [<a>Nama</a>/<a>Harga</a>/<a>Kategori</a>] [<a>Asc</a>/<a>Desc</a>]</small>
-					<div>
-						<small>Tanggal : <input type="text" class="datePicker" value="<?php echo date('d/m/Y'); ?>"></small>
-					</div>
+					<form action="index.php?p=menu" method="POST">
+						<select name="type" class="form-control">
+							<option val="nama">Nama</option>
+							<option val="harga">Harga</option>
+						</select>
+						<select name="sort" class="form-control">
+							<option val="asc">ASC</option>
+							<option val="desc">DESC</option>
+						</select>
+
+						<small>Tanggal : <input name="tgl" type="text" class="datePicker" value="<?php echo date('d/m/Y'); ?>"></small>
+						<input type="submit">
+					</form>
 
 				<table class="table table-mini page page1 page-active">					
 					<thead>
@@ -35,7 +45,7 @@
 							<td> <?php echo $dmenu->price; ?> </td>
 							<td> <?php echo $dmenu->amount; ?> </td>
 							<td> <?php echo $dmenu->category; ?> </td>
-							<td><a href="?p=menuDetail">Lihat</a></td>
+							<td><a href="?p=menuDetail&name=<?php echo $dmenu->name . "&time=" . $dmenu->time;?>">Lihat</a></td>
 							</tr>
 						<?php endforeach; ?>
 						<!-- <?php for($i = 1; $i <= 10; $i+=2): ?>
