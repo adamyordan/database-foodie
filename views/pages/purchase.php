@@ -147,8 +147,10 @@
 	});
 
 	function delete_row(i) {
-		$('#row_bahan_' + i).fadeOut(300, function() { $(this).remove(); });
-		updateDangerRow();
+		$('#row_bahan_' + i).fadeOut(300, function() { 
+			$(this).remove(); 
+			updateDangerRow();
+		});
 	}
 
 	function calculate_total(i) {
