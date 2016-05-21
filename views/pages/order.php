@@ -15,21 +15,21 @@
 						<span class="dateValue"><?php echo date('m/d/Y'); ?></span>
 					</div>
 						
-					<select class="group col-md-3">
-					  	<option></option>
-					  	<option value="waktu">Waktu Pesan</option>
-					  	<option value="nota">Nomor Nota</option>
-					  	<option value="nota">Kasir</option>
+					<select class="group selection col-md-3">
+					  	<option value="nomornota">Nomor Nota</option>
+					  	<option value="waktupesan">Waktu Pesan</option>
+					  	<option value="emailkasir">Kasir</option>
 					</select>
 
-					<select class="sort col-md-2">
-						<option></option>
+					<select class="sort selection col-md-2">
+						<option value="desc">Descending</option>
 					  	<option value="asc">Ascending</option>
-					  	<option value="desc">Descending</option>
 					</select>
 				</div>	
 
 				<div class ="datepicker"></div>
+
+				<div class = 'table-div' >
 
 				<?php $count = 1; $page = 1;?>
 				<?php foreach ($data['orders'] as $order ) : ?>
@@ -49,16 +49,16 @@
 					</thead>
 					<tbody>
 				<?php endif; ?>
-							<tr>
-								<td><?php echo $count; ?></td> 
-								<td><?php echo $order->nomornota; ?></td>
-								<td><?php echo $order->waktupesan; ?></td>
-								<td><?php echo $order->waktubayar; ?></td>
-								<td><?php echo $order->total; ?></td>
-								<td><?php echo $order->emailkasir; ?></td>
-								<td><?php echo $order->mode; ?></td>
-								<td><a data-toggle="modal" data-target="#myModal" class="detail">Lihat</a></td>
-							</tr>
+						<tr>
+							<td><?php echo $count; ?></td> 
+							<td><?php echo $order->nomornota; ?></td>
+							<td><?php echo $order->waktupesan; ?></td>
+							<td><?php echo $order->waktubayar; ?></td>
+							<td><?php echo $order->total; ?></td>
+							<td><?php echo $order->emailkasir; ?></td>
+							<td><?php echo $order->mode; ?></td>
+							<td><a data-toggle="modal" data-target="#myModal" class="detail" onclick="showDetail()">Lihat</a></td>
+						</tr>
 				<?php if ($count++ % 15 == 0 || $count > sizeof($data['orders']) ) : ?>
 					</tbody>
 				</table>
@@ -70,6 +70,7 @@
     			<?php endfor; ?>
 			</div>
 			</div>
+		</div>
 
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
 			  <div class="modal-dialog modal-lg">
@@ -81,7 +82,7 @@
 			        </button>
 			        <h4 class="modal-title" id="myModalLabel">Detail Pemesanan</h4>
 			      </div>
-			      
+
 			      <div class="modal-body">
 			      </div>
 			    </div>
