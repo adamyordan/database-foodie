@@ -29,3 +29,7 @@ body {
 .navbar {
 	border-radius: 0px;
 }
+
+.danger {
+	transition: background-color 2s;
+}

@@ -87,8 +87,20 @@
 			$data->purchase = $purchase;
 
 			View::json($data);
-
 		}
+
+		public static function api_purchase_checkno() {
+			$no = $_POST['no'];			
+			if(Purchase::find($no) != null) {
+				$data = new stdClass();
+				$data->status = "failed";
+			} else {
+				$data = new stdClass();
+				$data->status = "ok";
+			}
+			View::json($data);
+		}
+
 
 		private static function checkAuth() {
 			if(empty($_SESSION['login_user'])){

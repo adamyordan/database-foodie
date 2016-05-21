@@ -13,12 +13,15 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/core.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/order.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/sweetalert2.min.css">
 	
     <script type="text/javascript" src="resources/js/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="resources/js/select2.min.js"></script> 
+	<script type="text/javascript" src="resources/js/sweetalert2.min.js"></script>
 	<script type="text/javascript" src="resources/js/order.js"></script>
+	<script type="text/javascript" src="resources/js/core.js"></script>
 </head>
 <body>
 

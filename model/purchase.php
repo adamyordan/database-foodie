@@ -6,19 +6,20 @@
 		public $supplier;
 		public $staff;
 
-		// public static function find($name) {
-		// 	$result = DB::query("SELECT * FROM BAHAN_BAKU WHERE nama='$name'");
-		// 	if($result == false || $result->rowCount() == 0) {
-		// 		return null;
-		// 	} else {
-		// 		$row = $result->fetchAll()[0];
-		// 		$material = new Material();
-		// 		$material->name = $row['nama'];
-		// 		$material->unit = $row['satuanstok'];
-		// 		$material->stock = $row['stok'];
-		// 		return $material;
-		// 	}
-		// }
+		public static function find($no) {
+			$result = DB::query("SELECT * FROM PEMBELIAN WHERE NomorNota='$no'");
+			if($result == false || $result->rowCount() == 0) {
+				return null;
+			} else {
+				$row = $result->fetchAll()[0];
+				$purchase = new Purchase();
+				$purchase->no = $row['nomornota'];
+				$purchase->time = $row['waktu'];
+				$purchase->supplier = $row['namasupplier'];
+				$purchase->supplier = $row['emailstaf'];
+				return $purchase;
+			}
+		}
 
 		// public static function all() {
 		// 	$result = DB::query("SELECT * FROM BAHAN_BAKU");

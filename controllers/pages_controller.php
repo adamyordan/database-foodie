@@ -2,6 +2,7 @@
 	require_once('model/supplier.php');
 	require_once('model/material.php');
 	require_once('model/menu.php');
+	require_once('model/unit.php');
 
 	class PagesController {
 
@@ -21,10 +22,12 @@
 			$user = self::checkAuth();
 			$suppliers = Supplier::all();
 			$materials = Material::all();
+			$units     = Unit::all();
 			View::render('pages/purchase', [
-				'user' => $user,
+				'user'      => $user,
 				'suppliers' => $suppliers,
-				'materials' => $materials
+				'materials' => $materials,
+				'units'     => $units
 				]);
 		}
 
