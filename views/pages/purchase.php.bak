@@ -55,11 +55,94 @@
 	</div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        	<span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Confirm Purchase</h4>
+      </div>
+      <div class="modal-body">
+
+      		<div class="row">
+      			<div class="col-md-5 col-md-offset-6">
+      				<div class="row">
+      					<div class="col-sm-6">
+		      				<p class="small text-right">Nomor Nota: </p>
+		      				<p class="small text-right">Supplier: </p>
+      					</div>
+      					<div class="col-sm-6">
+		      				<p class="small text-right">12345</p>
+		      				<p class="small text-right">Fasilkom UI</p>
+      					</div>
+      				</div>
+      			</div>
+      		</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-bordered table-striped table-mini">
+						<thead>
+							<tr>
+								<td>Nama Bahan</td>
+								<td>Harga Satuan</td>
+								<td>Satuan</td>
+								<td>Jumlah</td>
+								<td>Total</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Ayam</td>
+								<td>1000</td>
+								<td>kg</td>
+								<td>3</td>
+								<td>3000</td>
+							</tr>
+							<tr>
+								<td>Sapi</td>
+								<td>1500</td>
+								<td>lbs</td>
+								<td>5</td>
+								<td>7500</td>
+							</tr>
+							<tr>
+								<td>Telur</td>
+								<td>200</td>
+								<td>kg</td>
+								<td>10</td>
+								<td>2000</td>
+							</tr>
+							<tr>
+								<td><b>Total</b></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><b>12500</b></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <script type="text/javascript">
 	var num_rows = 0; 
-	for (var i = 0; i < 1; i++) {
+	for (var i = 0; i < 3; i++) {
 		insert_row(num_rows);
 		num_rows += 1;		
 	}
