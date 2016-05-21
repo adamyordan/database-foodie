@@ -6,12 +6,35 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="well">
-				<h5>Foodie - List Pemesanan</h5>
-				<small>Urutkan Berdasarkan -- [<a>Waktu Pesan</a>/<a>Nomor Nota</a>/<a>Kasir</a>] [<a>Asc</a>/<a>Desc</a>]</small>
-					<div>
-						<small>Tanggal : <input type="text" class="datePicker" value="<?php echo date('d/m/Y'); ?>"></small>
+				<h5>List Pemesanan</h5>
+				<div>
+					<div class="col-md-1 fui-calendar datepickerimage calendar-off">
 					</div>
-				<table class="table table-mini page page1 page-active">
+
+					<div class="col-md-5">
+						<span class="dateValue"><?php echo date('m/d/Y'); ?></span>
+					</div>
+						
+					<select class="group col-md-3">
+					  	<option></option>
+					  	<option value="waktu">Waktu Pesan</option>
+					  	<option value="nota">Nomor Nota</option>
+					  	<option value="nota">Kasir</option>
+					</select>
+
+					<select class="sort col-md-2">
+						<option></option>
+					  	<option value="asc">Ascending</option>
+					  	<option value="desc">Descending</option>
+					</select>
+				</div>	
+
+				<div class ="datepicker"></div>
+
+				<?php $count = 1; $page = 1;?>
+				<?php foreach ($data['orders'] as $order ) : ?>
+				<?php if ($count == 1 || $count % 15 == 1) : ?>	
+				<table class="table table-mini page <?php echo $count == 1 ? "page-active" : "" ?> page<?php echo $page++;?>">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -24,75 +47,45 @@
 							<th></th>
 						</tr>
 					</thead>
-					<tbody> 
-						<tr> 
-							<td scope="row"><?php echo 1; ?></th> 
-							<td>ABC777</td> 
-							<td><?php echo date('d/m/Y H:i:s');?></td> 
-							<td><?php echo date('d/m/Y H:i:s');?> </td> 
-							<td>60,000</td> 
-							<td>Anto</td> 
-							<td>Tunai</td>
-							<td><a href="?p=orderDetail">Lihat</a></td>
-						</tr>
-						<?php for($i = 2; $i <= 15; $i+=1): ?> 
-						<tr> 
-							<td scope="row"><?php echo $i; ?></th> 
-							<td>ABC756</td> 
-							<td><?php echo date('d/m/Y');?> 15:<?php echo 59 - $i;?>:24</td> 
-							<td><?php echo date('d/m/Y');?> 15:<?php echo 59 -$i -1;?>:24</td>  
-							<td>130,000</td> 
-							<td>Budi</td> 
-							<td>Debit</td>
-							<td><a href="?p=orderDetail">Lihat</a></td>
-						</tr>
-						<?php endfor; ?>
-					</tbody> 
+					<tbody>
+				<?php endif; ?>
+							<tr>
+								<td><?php echo $count; ?></td> 
+								<td><?php echo $order->nomornota; ?></td>
+								<td><?php echo $order->waktupesan; ?></td>
+								<td><?php echo $order->waktubayar; ?></td>
+								<td><?php echo $order->total; ?></td>
+								<td><?php echo $order->emailkasir; ?></td>
+								<td><?php echo $order->mode; ?></td>
+								<td><a data-toggle="modal" data-target="#myModal" class="detail">Lihat</a></td>
+							</tr>
+				<?php if ($count++ % 15 == 0 || $count > sizeof($data['orders']) ) : ?>
+					</tbody>
 				</table>
+				<?php endif; ?>
+			<?php endforeach; ?>
+			<div class="pagination">
+				<?php for ($a = 1; $a < sizeof($data['orders']) ; $a += 15) : ?>
+				<li <?php echo $a == 1 ? 'class="active"':''; ?>><a class="pageNum"><?php echo floor (($a/15) + 1); ?></a></li>
+    			<?php endfor; ?>
+			</div>
+			</div>
 
-				<table class="table table-mini page page2">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Nomor Nota</th>
-							<th>Waktu Pesan</th>
-							<th>Waktu Bayar</th>
-							<th>Total</th>
-							<th>Kasir</th>
-							<th>Mode Bayar</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody> 
-						<tr> 
-							<td scope="row"><?php echo 16; ?></th> 
-							<td>A1234C</td> 
-							<td><?php echo date('d/m/Y H:i:s');?> </td> 
-							<td><?php echo date('d/m/Y H:i:s');?> </td> 
-							<td>60,000</td> 
-							<td>Anto</td> 
-							<td>Tunai</td>
-							<td><a href="?p=orderDetail">Lihat</a></td>
-						</tr> 
-						<?php for($i = 17; $i < 30; $i+=1): ?>
-						<tr> 
-							<td scope="row"><?php echo $i+1; ?></th> 
-							<td>BBBB25</td> 
-							<td><?php echo date('d/m/Y');?> 15:<?php echo 59 - $i;?>:24</td> 
-							<td><?php echo date('d/m/Y');?> 15:<?php echo 59 - $i;?>:24</td> 
-							<td>130,000</td> 
-							<td>Budi</td> 
-							<td>Debit</td>
-							<td><a href="?p=orderDetail">Lihat</a></td>
-						</tr>
-						<?php endfor; ?>
-					</tbody> 
-				</table>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+			  <div class="modal-dialog modal-lg">
 
-				<div class="pagination">
-						<li class="active"><a class="pageNum">1</a></li>
-    					<li class=""><a class="pageNum">2</a></li>
-				</div>
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			        	<span aria-hidden="true">&times;</span>
+			        </button>
+			        <h4 class="modal-title" id="myModalLabel">Detail Pemesanan</h4>
+			      </div>
+			      
+			      <div class="modal-body">
+			      </div>
+			    </div>
+			  </div>
 			</div>
 		</div>
 	</div>
