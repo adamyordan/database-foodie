@@ -3,6 +3,8 @@
 	require_once('model/material.php');
 	require_once('model/menu.php');
 	require_once('model/unit.php');
+	require_once('model/order.php');
+	require_once('model/daily-order.php');
 
 	class PagesController {
 
@@ -37,7 +39,11 @@
 
 		public static function order() {
 			$user = self::checkAuth();
-			View::render('pages/order',['user' => $user]);
+			$orders = Order::orderList();
+			View::render('pages/order',[
+				'user' => $user,
+				'orders' => $orders
+				]);
 		}
 		
 		public static function purchaseList() {

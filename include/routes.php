@@ -2,7 +2,8 @@
 	
 	$CONTROLLER_LIST = [
 		'pages_controller' => 'PagesController',
-		'api_controller'  => 'ApiController'
+		'api_controller'  => 'ApiController',
+		'order_controller'  => 'OrderController'
 	];
 
 	require_once('include/view.php');
