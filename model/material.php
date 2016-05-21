@@ -5,10 +5,6 @@
 		public $unit;
 		public $stock;
 
-		private function __clone() {}
-
-		private function __construct() {}
-
 		public static function find($name) {
 			$result = DB::query("SELECT * FROM BAHAN_BAKU WHERE nama='$name'");
 			if($result == false || $result->rowCount() == 0) {
@@ -38,6 +34,10 @@
 				}
 				return $materials;		
 			}
+		}
+
+		public static function save($m) {
+			$result = DB::query("INSERT INTO BAHAN_BAKU VALUES ('$m->name', '$m->unit', '$m->stock')");
 		}
 	}
 ?>

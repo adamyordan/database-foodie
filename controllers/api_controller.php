@@ -1,5 +1,6 @@
 <?php
 	require_once('model/user.php');
+	require_once('model/purchase.php');
 
 	class ApiController {
 
@@ -49,11 +50,11 @@
 			}
 		}
 
-		public static function api_purchase_insert() {
+		public static function api_purchase() {
 			$no_nota = $_POST['no_nota'];
-			$times   = 'now()';
+			$time    = date('Y-m-d H:i:s');
 			$supplier = $_POST['supplier'];
-			$staf = $_POST['staf?'];
+			$staff = self::checkAuth()->email;
 
 			$mnames  = $_POST['mname'];
 			$mprices = $_POST['mprice'];
@@ -62,7 +63,41 @@
 			$mtotals = $_POST['mtotal'];
 
 
+			$purchase = new Material();
+			$purchase->no = $no_nota;
+			$purchase->time = $time;
+			$purchase->supplier = $supplier;
+			$purchase->staff = $staff;
+
+			$purchase->details = array();
+
+			for($i = 0; $i < count($mnames); $i++) {
+				$detail = new stdClass();
+				$detail->qty = $mqtys[$i];
+				$detail->unit = $munits[$i];
+				$detail->price = $mprices[$i];
+				$detail->material = $mnames[$i];
+				array_push($purchase->details, $detail);
+			}
+
+			$status = Purchase::save($purchase);
+
+			$data = new stdClass();
+			$data->status = $status;
+			$data->purchase = $purchase;
+
+			View::json($data);
+
 		}
+
+		private static function checkAuth() {
+			if(empty($_SESSION['login_user'])){
+				header('Location: index.php');
+			}
+			$login_user_email = $_SESSION['login_user'];
+			return User::find($login_user_email);			
+		}
+
 
 	}
 ?>

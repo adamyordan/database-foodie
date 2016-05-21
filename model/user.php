@@ -8,10 +8,6 @@
 		public $role;
 		public $job;
 
-		private function __clone() {}
-
-		private function __construct() {}
-
 		public static function find($email) {
 			$result = DB::query("SELECT * FROM USERS WHERE email='$email'");
 			if($result == false || $result->rowCount() == 0) {

@@ -5,10 +5,6 @@
 		public $email;
 		public $address;
 
-		private function __clone() {}
-
-		private function __construct() {}
-
 		public static function find($name) {
 			$result = DB::query("SELECT * FROM SUPPLIER WHERE nama='$name'");
 			if($result == false || $result->rowCount() == 0) {

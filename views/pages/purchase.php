@@ -7,21 +7,22 @@
 		<div class="col-md-12">
 
 			<div class="well">
-				<h5>FOODIE - BELI BAHAN MAKANAN</h5>
+				<h5>Pembelian Baru</h5>
 				<div class="form-horizontal">
 					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-2 control-label">Nomor Nota</label>
+						<label for="no_nota" class="col-sm-2 control-label">Nomor Nota</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputEmail3" placeholder="Nomor Nota">
+							<input type="text" class="form-control" name="no_nota" placeholder="Nomor Nota">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">Supplier</label>
+						<label for="supplier" class="col-sm-2 control-label">Supplier</label>
 						<div class="col-sm-10">
-							<select class="selected-2 form-control mini">
-								<?php foreach($data['suppliers'] as $supplier): ?>
-									<option> <?php echo $supplier->name; ?> </option>
-								<?php endforeach; ?>
+							<select class="selected-2 form-control mini" name="supplier">
+								<?php foreach($data['suppliers'] as $supplier):
+									echo "<option value='$supplier->name'> $supplier->name </option>"; 
+									endforeach;
+								?>
 							</select>
 						</div>
 					</div>
@@ -43,6 +44,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-10">
+							<button class="btn btn-primary" id="btn_purchase">Purchase#</button>
 							<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Purchase</button>
 						</div>
 					</div>
@@ -157,21 +159,21 @@
 
 			<tr id="row_bahan_` + i + `">
 				<td>
-					<select class="selected-2 form-control mini">
+					<select class="selected-2 form-control mini" name="mname[]">
 						<?php foreach($data['materials'] as $material): ?>
 							<option> <?php echo $material->name; ?> </option>
 						<?php endforeach; ?>
 					</select>
 				</td>
-				<td><input id="row_hargasatuan_` + i + `" onkeyup="calculate_total(` + i + `)" type="number" min="0" value="0" class="form-control mini"></td>
+				<td><input id="row_hargasatuan_` + i + `" onkeyup="calculate_total(` + i + `)" type="number" min="0" value="0" class="form-control mini" name="mprice[]"></td>
 				<td>
-					<select class="selected-2 form-control mini">
+					<select class="selected-2 form-control mini" name="munit[]">
 					  <option value="AL">kg</option>
 					  <option value="WY">lbs</option>
 					</select>
 				</td>
-				<td><input id="row_jumlah_` + i + `" onkeyup="calculate_total(` + i + `)" type="number" min="0" value="0" class="form-control mini"></td>
-				<td><input id="row_total_` + i + `" onkeyup="calculate_total(` + i + `)" type="number" min="0" value="0" class="form-control mini nodisable" disabled></td>
+				<td><input id="row_jumlah_` + i + `" onkeyup="calculate_total(` + i + `)" type="number" min="0" value="0" class="form-control mini" name="mqty[]"></td>
+				<td><input id="row_total_` + i + `" onkeyup="calculate_total(` + i + `)" type="number" min="0" value="0" class="form-control mini nodisable" disabled name="mtotal[]"></td>
 				<td>
 					<button onclick="delete_row(` + i + `)"
 					 type="button" class="btn btn-danger btn-xs">Delete</button>
@@ -190,4 +192,41 @@
 	function calculate_total(i) {
 		$('#row_total_' + i).val($('#row_hargasatuan_' + i).val() * $('#row_jumlah_' + i).val());
 	}
+
+	$('#btn_purchase').click(function() {
+        $.post(
+            "?p=api_purchase",
+            {
+            	"no_nota" : $("[name='no_nota']").val(),
+            	"supplier" : $("[name='supplier']").val(),
+            	"staf" : "adam",
+            	"mname" : $("[name='mname[]']").map(function() {return $(this).val();}).get(),
+            	"mprice" : $("[name='mprice[]']").map(function() {return $(this).val();}).get(),
+            	"munit" : $("[name='munit[]']").map(function() {return $(this).val();}).get(),
+            	"mqty" : $("[name='mqty[]']").map(function() {return $(this).val();}).get(),
+            	"mtotal" : $("[name='mtotal[]']").map(function() {return $(this).val();}).get(),
+            },
+            function(data) {
+                // if (data.status == "ok") {
+                //     $(`
+                //         <div class="alert alert-success">
+                //             <strong>Login success,</strong> redirecting...
+                //         </div>
+                //     `).fadeIn(200).prependTo('#login-msg-container');
+                //     setTimeout(function() {
+                //       window.location.href = "?p=look";
+                //     }, 1000);
+                // } else {
+                //     $(`
+                //         <div class="alert alert-danger">
+                //             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                //             <strong>Failed!</strong> Login Failed
+                //         </div>
+                //     `).fadeIn(200).prependTo('#login-msg-container');
+                // }
+                alert(data);
+            },
+            "json"
+        );
+	})
 </script>
