@@ -52,7 +52,6 @@ $(document).ready (function () {
 
 	$(".datepicker").datepicker({
         dateFormat: 'dd/mm/yy',
-        defaultDate: '17/12/2016',
 		onSelect: function(dateText, inst) {
       			$(".dateValue").html(dateText);
       			$(".datepicker").hide();
@@ -68,7 +67,7 @@ $(document).ready (function () {
                         if (data.status == "ok") {
                             sortResult(data);
                         } else {
-                           $('.table-div').html('<h2>No Order Exist</h2>');
+                           $('.table-div').html('<h4>Hari Ini Tidak Ada Pemesanan :(</h4>');
                         }
                     },
                     "json"

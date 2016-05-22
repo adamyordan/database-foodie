@@ -16,7 +16,7 @@
 			$d = date('d');
 			$m = date('m');
 			$y = date('Y');
-			$result = DB::query("SELECT * FROM PEMESANAN where date_part('day',waktupesan) = '17' and date_part('month',waktupesan) ='12' and date_part('year',waktupesan) = '2016' ORDER BY nomornota DESC");
+			$result = DB::query("SELECT * FROM PEMESANAN where date_part('day',waktupesan) = '$d' and date_part('month',waktupesan) ='$m' and date_part('year',waktupesan) = '$y' ORDER BY nomornota DESC");
 
 			if($result == false || $result->rowCount() <= 0) {
 				return null;

@@ -12,7 +12,7 @@
 					</div>
 
 					<div class="col-md-3">
-						<span class="dateValue datepickerimage calendar-off"><?php echo '17/12/2016'; ?></span>
+						<span class="dateValue datepickerimage calendar-off"><?php echo date('d/m/Y'); ?></span>
 					</div>
 
 					<div class="col-md-2 fui-list-numbered">
@@ -35,6 +35,7 @@
 
 				<div class = 'table-div' >
 					<?php $count = 1; $page = 1;?>
+					<?php if (sizeof ($data['orders']) > 0) : ?>	
 					<?php foreach ($data['orders'] as $order ) : ?>
 					<?php if ($count == 1 || $count % 15 == 1) : ?>	
 					<table class="table table-mini page <?php echo $count == 1 ? "page-active" : "" ?> page<?php echo $page++;?>">
@@ -73,6 +74,11 @@
 					<li <?php echo $a == 1 ? 'class="active"':''; ?>><a class="pageNum"><?php echo floor (($a/15) + 1); ?></a></li>
 	    			<?php endfor; ?>
 					</div>
+					<?php endif; ?>
+
+					<?php if (sizeof ($data['orders']) == 0) : ?>
+						<h4>Hari Ini Tidak Ada Pemesanan :( </h4>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
