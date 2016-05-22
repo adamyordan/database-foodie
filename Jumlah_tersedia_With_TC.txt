@@ -1,0 +1,71 @@
+CREATE OR REPLACE FUNCTION hitung_jumlah_tersediaMH()
+RETURNS trigger AS
+$$
+    BEGIN
+        IF (TG_OP = 'INSERT') THEN
+            UPDATE MENU SET jumlahtersedia = jumlahtersedia + NEW.jumlah
+            WHERE nama = NEW.namamenu;
+
+        ELSEIF (TG_OP = 'DELETE') THEN
+            UPDATE MENU SET jumlahtersedia = jumlahtersedia - OLD.jumlah
+            WHERE nama= OLD.namamenu;
+
+        ELSEIF (TG_OP = 'UPDATE') THEN
+            UPDATE MENU SET jumlahtersedia = jumlahtersedia + NEW.jumlah
+            WHERE nama = NEW.namamenu;
+            UPDATE MENU SET jumlahtersedia = jumlahtersedia - OLD.jumlah
+            WHERE nama = OLD.namamenu;
+        END IF;
+            RETURN NEW;
+    END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER jumlah_tersediaMH
+AFTER INSERT OR DELETE OR UPDATE
+ON MENU_HARIAN FOR EACH ROW
+EXECUTE PROCEDURE hitung_jumlah_tersediaMH();
+
+INSERT INTO MENU_HARIAN VALUES ('Spicy Coffee', '2015-01-26 12:24:14', '100', 'christal.sadye@omail.com');
+
+DELETE FROM MENU_HARIAN WHERE namamenu = 'Spicy Coffee' AND waktu = '2015-01-26 12:24:14';
+
+INSERT INTO MENU_HARIAN VALUES ('Spicy Coffee', '2015-01-26 12:24:14', '200', 'christal.sadye@omail.com');
+
+UPDATE MENU_HARIAN SET namamenu = 'Fried Milk' WHERE namamenu = 'Spicy Coffee' AND waktu = '2015-01-26 12:24:14';
+
+CREATE OR REPLACE FUNCTION hitung_jumlah_tersediaPMH()
+RETURNS trigger AS
+$$
+    BEGIN
+        IF (TG_OP = 'INSERT') THEN
+            UPDATE MENU SET jumlahtersedia = jumlahtersedia - NEW.jumlah
+            WHERE nama = NEW.namamenu;
+
+        ELSEIF (TG_OP = 'DELETE') THEN
+            UPDATE MENU SET jumlahtersedia = jumlahtersedia + OLD.jumlah
+            WHERE nama= OLD.namamenu;
+
+        ELSEIF (TG_OP = 'UPDATE') THEN
+            UPDATE MENU SET jumlahtersedia = jumlahtersedia - NEW.jumlah
+            WHERE nama = NEW.namamenu;
+            UPDATE MENU SET jumlahtersedia = jumlahtersedia + OLD.jumlah
+            WHERE nama = OLD.namamenu;
+        END IF;
+            RETURN NEW;
+    END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER jumlah_tersediaPMH
+AFTER INSERT OR DELETE OR UPDATE
+ON PEMESANAN_MENU_HARIAN FOR EACH ROW
+EXECUTE PROCEDURE hitung_jumlah_tersediaPMH();
+
+INSERT INTO PEMESANAN_MENU_HARIAN VALUES ('ps0172','Fried Milk', '2015-01-26 12:24:14', '100');
+
+DELETE FROM PEMESANAN_MENU_HARIAN WHERE nomornota = 'ps0149' AND namamenu = 'Fried Milk' AND waktu = '2015-03-31 10:12:21';
+
+INSERT INTO MENU_HARIAN VALUES ('Spicy Coffee', '2015-01-26 12:24:14', '500', 'christal.sadye@omail.com');
+
+UPDATE PEMESANAN_MENU_HARIAN SET namamenu = 'Fried Milk', waktu = '2015-12-07 13:08:36' WHERE nomornota = 'ps0172' AND namamenu = 'Spicy Coffee' AND waktu = '2015-01-26 12:24:14';
