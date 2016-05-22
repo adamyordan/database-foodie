@@ -16,7 +16,7 @@
 			$d = date('d');
 			$m = date('m');
 			$y = date('Y');
-			$result = DB::query("SELECT * FROM PEMESANAN ORDER BY nomornota DESC");
+			$result = DB::query("SELECT * FROM PEMESANAN where date_part('day',waktupesan) = '$d' and date_part('month',waktupesan) ='$m' and date_part('year',waktupesan) = '$y' ORDER BY nomornota DESC");
 
 			if($result == false || $result->rowCount() <= 0) {
 				return null;
@@ -43,8 +43,8 @@
 			}
 		}
 
-		public static function sort($group,$sort) {
-			$result = DB::query("SELECT * FROM PEMESANAN ORDER BY $group $sort");
+		public static function sort($group,$sort,$date) {
+			$result = DB::query("SELECT * FROM PEMESANAN where date_part('day',waktupesan) = '$date[0]' and date_part('month',waktupesan) ='$date[1]' and date_part('year',waktupesan) = '$date[2]' ORDER BY $group $sort");
 
 			if($result == false || $result->rowCount() <= 0) {
 				return null;
