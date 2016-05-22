@@ -76,11 +76,13 @@
 					]);
 			} else {
 				$menus = Menu::all();
+				$dmenus = Menu::all();
 				$user = self::checkAuth();
 				
 				View::render('pages/menu',[
 					'user' => $user, 
 					'menus' => $menus,					
+					'dmenus' => $dmenus
 					]);
 			}
 		}

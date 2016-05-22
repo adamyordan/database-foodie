@@ -21,6 +21,7 @@
 							<option val="asc">ASC</option>
 							<option val="desc">DESC</option>
 						</select>
+						<br>
 						<?php if (empty($_POST['date']) === false){ ?>
 						<small>Tanggal : <input name="date" type="text" class="datePicker" value="<?php echo $_POST['date']; ?>"></small>
 						<?php } else { ?>
@@ -28,8 +29,11 @@
 						<?php } ?>
 						<input type="submit">
 					</form>
-				<?php if (empty($_POST['date']) === false){ ?>				
-				<table class="table table-mini page page1 page-active">					
+				 
+				<?php $count = 1; $page = 1;?>
+				<?php foreach ($data['dmenus'] as $dmenu ) : ?>
+				<?php if ($count == 1 || $count % 15 == 1) : ?>				
+				<table class="table table-mini page <?php echo $count == 1 ? "page-active" : "" ?> page<?php echo $page++;?>">					
 					<thead>
 						<tr>
 							<th>#</th>
@@ -42,65 +46,28 @@
 						</tr>
 					</thead>
 					<tbody> 
-						<?php  ?>
-						<?php if (empty($data['dmenus']) === false){ 
-						$number = 1; 
-						foreach($data['dmenus'] as $dmenu):?>
-							<tr>
-							<td> <?php echo $number++; ?> </td> 
+				<?php endif; ?>						
+						<tr>
+							<td> <?php echo $count; ?> </td> 
 							<td> <?php echo $dmenu->name; ?> </td>
 							<td> <?php echo $dmenu->description; ?> </td>
 							<td> <?php echo $dmenu->price; ?> </td>
 							<td> <?php echo $dmenu->amount; ?> </td>
 							<td> <?php echo $dmenu->category; ?> </td>
 							<td><a href="?p=menuDetail&name=<?php echo $dmenu->name . "&time=" . $dmenu->time;?>">Lihat</a></td>
-							</tr>
-						<?php endforeach; } ?>
-					</tbody> 
-				</table>
-
-				<table class="table table-mini page page2">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Nama</th>
-							<th>Deskripsi</th>
-							<th>Harga</th>
-							<th>Jumlah tersedia</th>
-							<th>Kategori</th>
-							<th></th>
 						</tr>
-					</thead>
-					<tbody> 
-						<?php for($i = 11; $i <= 20; $i+=2): ?>
-						<tr> 
-							<td scope="row"><?php echo $i; ?></th> 
-							<td>Ricey Rice</td> 
-							<td>Nasi dengan lauk nasi</td> 
-							<td>2,000</td> 
-							<td>20</td> 
-							<td>Makanan</td> 
-							<td><a href="?p=menuDetail">Lihat</a></td>
-						</tr> 
-						<tr> 
-							<td scope="row"><?php echo $i+1; ?></th> 
-							<td>Fried Water</td> 
-							<td>air biasa namun cara masaknya digoreng </td> 
-							<td>1,000</td> 
-							<td>23</td> 
-							<td>Minuman</td> 
-							<td><a href="?p=menuDetail">Lihat</a></td>
-						</tr>
-						<?php endfor; ?>
-					</tbody> 
+				<?php if ($count++ % 15 == 0 || $count > sizeof($data['dmenus']) ) : ?>
+					</tbody>
 				</table>
+				<?php endif; ?>
+				<?php endforeach; ?>
 
-				<div class="pagination">
-						<li class="active"><a class="pageNum">1</a></li>
-    					<li class=""><a class="pageNum">2</a></li>
-				</div>
-
-				<?php } ?>
+					<div class="pagination">
+						<?php for ($a = 1; $a < sizeof($data['dmenus']) ; $a += 15) : ?>
+						<li <?php echo $a == 1 ? 'class="active"':''; ?>><a class="pageNum"><?php echo floor (($a/15) + 1); ?></a></li>
+		    			<?php endfor; ?>
+					</div>
+								
 			</div>
 		</div>
 	</div>

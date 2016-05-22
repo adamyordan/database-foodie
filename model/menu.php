@@ -24,7 +24,7 @@
 		// }
 
 		public static function menu_detail($name, $time) {
-			$result = DB::query("SELECT * FROM MENU_HARIAN MH, MENU M WHERE namamenu = nama AND nama = '$name' AND waktu = '$time' ORDER BY namamenu ASC LIMIT 10");
+			$result = DB::query("SELECT * FROM MENU_HARIAN MH, MENU M WHERE namamenu = nama AND nama = '$name' AND waktu = '$time' ORDER BY namamenu ASC");
 			if($result == false || $result->rowCount() <= 0) {
 				 return null;				
 			} else {				
@@ -43,7 +43,7 @@
 		}
 
 		public static function all() {
-			$result = DB::query("SELECT * FROM MENU_HARIAN LIMIT 10");
+			$result = DB::query("SELECT * FROM MENU_HARIAN MH, MENU M WHERE namamenu = nama");
 			if($result == false || $result->rowCount() <= 0) {
 				return null;
 			} else {
@@ -54,6 +54,9 @@
 					$menu->time = $row['waktu'];
 					$menu->amount = $row['jumlah'];
 					$menu->emailC = $row['emailchef'];
+					$menu->description = $row['deskripsi'];
+					$menu->price = $row['harga'];
+					$menu->category = $row['kategori'];
 					array_push($menus, $menu);
 				}
 				return $menus;		
