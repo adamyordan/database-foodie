@@ -1,3 +1,4 @@
+<script type="text/javascript" src="resources/js/order.js"></script>
 <div class="col-md-3">
 	<?php require_once('views/partials/sidebar.php'); ?>
 </div>
@@ -57,7 +58,7 @@
 							<td><?php echo $order->total; ?></td>
 							<td><?php echo $order->emailkasir; ?></td>
 							<td><?php echo $order->mode; ?></td>
-							<td><a data-toggle="modal" data-target="#myModal" class="detail" onclick="showDetail()">Lihat</a></td>
+							<td><a data-toggle="modal" data-target="#myModal" class="detail">Lihat</a></td>
 						</tr>
 				<?php if ($count++ % 15 == 0 || $count > sizeof($data['orders']) ) : ?>
 					</tbody>

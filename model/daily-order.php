@@ -5,7 +5,6 @@
 		public $jumlah;
 		public $harga;
 
-
 		public static function findDetail ($nota) {
 			$result = DB::query("SELECT * FROM PEMESANAN_MENU_HARIAN where nomornota='$nota'");
 

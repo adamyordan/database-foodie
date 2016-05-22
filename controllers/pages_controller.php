@@ -48,7 +48,11 @@
 		
 		public static function purchaseList() {
 			$user = self::checkAuth();
-			View::render('pages/purchaseList',['user' => $user]);
+			$purchases = Purchase::all();
+			View::render('pages/purchase-list',[
+				'user' => $user,
+				'purchases' => $purchases
+			]);
 		}
 
 		public static function orderDetail() {
