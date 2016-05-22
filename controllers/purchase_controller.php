@@ -6,32 +6,28 @@
 		
 		public static function purchaseDetail() {
 			$ok = true;
-			$data = new stdClass();
 			if (!isset($_POST['nomornota'])) {
 				$ok = false;
 			} else {
-				$data->status = $_POST['nomornota'];
-				// $nomornota = $_POST['nomornota'];
-				// $detail = IngredientPurchase::findDetail($nomornota);
+				$nomornota = $_POST['nomornota'];
+				$detail = IngredientPurchase::findDetail($nomornota);
 
-				// if ($detail == null) {
-					// $ok = false;
-				// } else {
-					// $data = new stdClass();
-					// $data->status = "ok";
-					// $data->detail   = $detail;
-					// View::json($data);				
-				// }
+				if ($detail == null) {
+					$ok = false;
+				} else {
+					$data = new stdClass();
+					$data->status = "ok";
+					$data->detail   = $detail;
+					View::json($data);				
+				}
 				
 			}
 
-			// if ($ok == false) {
-				// $data = new stdClass();
-				// $data->status = "No Data Exist";
-				// View::json($data);
-			// }
-			
-			View::json($data);
+			if ($ok == false) {
+				$data = new stdClass();
+				$data->status = "No Data Exist";
+				View::json($data);
+			}
 		}
 		
 		public static function purchaseSort() {
