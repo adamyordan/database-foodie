@@ -1,0 +1,18 @@
+CREATE OR REPLACE FUNCTION foodie.total_harga()
+  RETURNS void AS
+$BODY$
+DECLARE
+	row RECORD;
+BEGIN
+	for row in 
+		SELECT p.nomornota as nota , SUM (jumlah*harga) as total
+		from menu m,pemesanan_menu_harian pm,pemesanan p
+		where m.nama = pm.namamenu and pm.nomornota = p.nomornota
+		GROUP BY p.nomornota
+	loop 
+		update pemesanan set total = row.total
+		where nomornota = row.nota;
+	end loop;
+END;
+$BODY$
+  LANGUAGE plpgsql;
