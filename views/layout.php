@@ -20,7 +20,6 @@
     <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="resources/js/select2.min.js"></script> 
 	<script type="text/javascript" src="resources/js/sweetalert2.min.js"></script>
-	<script type="text/javascript" src="resources/js/order.js"></script>
 	<script type="text/javascript" src="resources/js/core.js"></script>
 </head>
 <body>
