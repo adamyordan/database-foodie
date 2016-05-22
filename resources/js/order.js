@@ -33,9 +33,11 @@ $(document).ready (function () {
     $(".selection").change(function(){
         $sort1 = $('.group').val();
         $sort2 = $('.sort').val();
+        $date = $('.dateValue').html();
+        $sort3 = $date.split('/');
          $.post(
             "?p=sort",
-            {"sort1" : $sort1,"sort2" : $sort2},
+            {"sort1" : $sort1,"sort2" : $sort2,"sort3": $sort3},
             function(data) {
                 if (data.status == "ok") {
                     sortResult(data);
@@ -49,12 +51,30 @@ $(document).ready (function () {
 
 
 	$(".datepicker").datepicker({
-
+        dateFormat: 'dd/mm/yy',
+        defaultDate: '17/12/2016',
 		onSelect: function(dateText, inst) {
       			$(".dateValue").html(dateText);
       			$(".datepicker").hide();
+
+               $sort1 = $('.group').val();
+                $sort2 = $('.sort').val();
+                $date = $('.dateValue').html();
+                $sort3 = $date.split('/');
+                 $.post(
+                    "?p=sort",
+                    {"sort1" : $sort1,"sort2" : $sort2,"sort3": $sort3},
+                    function(data) {
+                        if (data.status == "ok") {
+                            sortResult(data);
+                        } else {
+                           $('.table-div').html('<h2>No Order Exist</h2>');
+                        }
+                    },
+                    "json"
+                );
     	}
-	}).hide().css("position","absolute");
+	}).hide().css("position","absolute").val();
 
     $(".datepickerimage").click(function() {
     	if ($(this).hasClass("calendar-off")) {
@@ -65,8 +85,7 @@ $(document).ready (function () {
     		$(".calendar-on").addClass('calendar-off');
     		$(".calendar-off").removeClass('calendar-on');
     		$(".datepicker").hide();
-    	}
-       
+    	}   
 
     });
 
@@ -159,7 +178,7 @@ function sortResult($data) {
                 '<td><a data-toggle="modal" data-target="#myModal" class="detail">Lihat</a></td>'+
             '</tr>';
 
-        if (($count++) % 15 == 0 ){
+        if ($count >= $data.detail.length || ($count++) % 15 == 0){
             $temp += 
                 '</tbody>'+
                 '</table>';
@@ -168,9 +187,9 @@ function sortResult($data) {
 
     $temp += '<div class="pagination">';
 
-   for ($a = 1; $a < $data.detail.length ; $a+=15) {
+   for ($a = 1; $a <= $data.detail.length ; $a+=15) {
         if ($a == 1) {
-            $temp += '<li class="active"><a class="pageNum">'+Math.floor(($a/15)+1)+'</a></li>';
+            $temp += '<li class="active"><a class="pageNum">'+ 1 +'</a></li>';
         }
          else {
             $temp += '<li><a class="pageNum">'+Math.floor(($a/15)+1)+'</a></li>';
@@ -179,7 +198,7 @@ function sortResult($data) {
 
    $temp += '</div>';
 
-   $('.table-div').html($temp);
+    $('.table-div').html($temp);
 
 }
 

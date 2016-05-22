@@ -4,3 +4,18 @@
 .page-active {
 	display : block;
 }
+a,.datepickerimage {
+	cursor: pointer;
+	cursor: hand;
+}
+
+.datepickerimage:hover {
+	cursor: pointer;
+	cursor: hand;
+}
+.dateValue {
+	padding-left: 0px;
+}
+.datepicker {
+	z-index: 10;
+}
