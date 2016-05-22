@@ -33,12 +33,13 @@
 
 		public static function sort () {
 			$ok = true;
-			if (!isset($_POST['sort1']) || !isset($_POST['sort2']) ) {
+			if (!isset($_POST['sort1']) || !isset($_POST['sort2']) || !isset($_POST['sort3']) ) {
 				$ok = false;
 			} else {
 				$sort1 = $_POST['sort1'];
 				$sort2 = $_POST['sort2'];
-				$detail = Order::sort($sort1,$sort2);
+				$sort3 = $_POST['sort3'];
+				$detail = Order::sort($sort1,$sort2,$sort3);
 
 				if ($detail == null) {
 					$ok = false;
