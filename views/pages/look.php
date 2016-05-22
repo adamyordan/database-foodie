@@ -86,6 +86,8 @@
 
 			<?php elseif ($data['user']->job == "Staf"): ?>
 
+				<h4>Pembelian Bahan</h4>
+
 				<table class="table table-mini">
 					<thead>
 						<tr>
