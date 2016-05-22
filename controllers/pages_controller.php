@@ -57,15 +57,32 @@
 		}
 
 		public static function menu() {
-			$user = self::checkAuth();
-			$menus = Menu::all();
-			$dmenus = Menu::daily_menu();
-			View::render('pages/menu',[
-				'user' => $user, 
-				'menus' => $menus,
-				'dmenus' => $dmenus
+			if (empty($_POST['date']) === false){
+				$var = $_POST['date'];
+				$tgl = str_replace('/', '-', $var);
+				$date = date('Y-m-d', strtotime($tgl));
 
-				]);
+				$group = $_POST['group'];
+				$sort = $_POST['sort'];
+				$dmenus = Menu::daily_menu($date, $group, $sort);
+			
+				$menus = Menu::all();
+				$user = self::checkAuth();
+				
+				View::render('pages/menu',[
+					'user' => $user, 
+					'menus' => $menus,
+					'dmenus' => $dmenus
+					]);
+			} else {
+				$menus = Menu::all();
+				$user = self::checkAuth();
+				
+				View::render('pages/menu',[
+					'user' => $user, 
+					'menus' => $menus,					
+					]);
+			}
 		}
 
 		public static function menuDetail() {

@@ -1,3 +1,5 @@
+
+<script type="text/javascript" src="resources/js/menu.js"></script>
 <div class="col-md-3">
 	<?php require_once('views/partials/sidebar.php'); ?>
 </div>
@@ -7,22 +9,26 @@
 		<div class="col-md-12">
 
 			<div class="well">
-			<h5>Foodie - List Menu</h5>
-				<small>Urutkan Berdasarkan -- [<a>Nama</a>/<a>Harga</a>/<a>Kategori</a>] [<a>Asc</a>/<a>Desc</a>]</small>
+			<h5>List Menu</h5>
+				<small>Urutkan Berdasarkan :</small>
 					<form action="index.php?p=menu" method="POST">
-						<select name="type" class="form-control">
+						<select name="group" class="form-control">
 							<option val="nama">Nama</option>
 							<option val="harga">Harga</option>
+							<option val="kategori">Kategori</option>
 						</select>
-						<select name="sort" class="form-control">
+						<select name="sort" class="form-control" val="test">
 							<option val="asc">ASC</option>
 							<option val="desc">DESC</option>
 						</select>
-
-						<small>Tanggal : <input name="tgl" type="text" class="datePicker" value="<?php echo date('d/m/Y'); ?>"></small>
+						<?php if (empty($_POST['date']) === false){ ?>
+						<small>Tanggal : <input name="date" type="text" class="datePicker" value="<?php echo $_POST['date']; ?>"></small>
+						<?php } else { ?>
+						<small>Tanggal : <input name="date" type="text" class="datePicker" value="<?php echo date('d/m/Y'); ?>"></small>
+						<?php } ?>
 						<input type="submit">
 					</form>
-
+				<?php if (empty($_POST['date']) === false){ ?>				
 				<table class="table table-mini page page1 page-active">					
 					<thead>
 						<tr>
@@ -36,8 +42,10 @@
 						</tr>
 					</thead>
 					<tbody> 
-						<?php $number = 1; ?>
-						<?php foreach($data['dmenus'] as $dmenu):?>
+						<?php  ?>
+						<?php if (empty($data['dmenus']) === false){ 
+						$number = 1; 
+						foreach($data['dmenus'] as $dmenu):?>
 							<tr>
 							<td> <?php echo $number++; ?> </td> 
 							<td> <?php echo $dmenu->name; ?> </td>
@@ -47,27 +55,7 @@
 							<td> <?php echo $dmenu->category; ?> </td>
 							<td><a href="?p=menuDetail&name=<?php echo $dmenu->name . "&time=" . $dmenu->time;?>">Lihat</a></td>
 							</tr>
-						<?php endforeach; ?>
-						<!-- <?php for($i = 1; $i <= 10; $i+=2): ?>
-						<tr> 
-							<td scope="row"><?php echo $i; ?></th> 
-							<td>Ayam Bakar</td> 
-							<td>Ayam Bakar saus madu dan lalapan</td> 
-							<td>20,000</td> 
-							<td>32</td> 
-							<td>Makanan</td> 
-							<td><a href="?p=menuDetail">Lihat</a></td>
-						</tr> 
-						<tr> 
-							<td scope="row"><?php echo $i+1; ?></th> 
-							<td>Es Teh Manis</td> 
-							<td>Teh manis dingin </td> 
-							<td>5,000</td> 
-							<td>73</td> 
-							<td>Minuman</td> 
-							<td><a href="?p=menuDetail">Lihat</a></td>
-						</tr>
-						<?php endfor; ?> -->
+						<?php endforeach; } ?>
 					</tbody> 
 				</table>
 
@@ -111,6 +99,8 @@
 						<li class="active"><a class="pageNum">1</a></li>
     					<li class=""><a class="pageNum">2</a></li>
 				</div>
+
+				<?php } ?>
 			</div>
 		</div>
 	</div>

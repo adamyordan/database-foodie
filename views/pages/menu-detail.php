@@ -9,8 +9,8 @@
 				<h5><?php  echo $data['menudt']->name; ?></h5>
 				<div class="row">
 					<div class="col-md-6">						
-						<img src="http://resepmasakankue.com/wp-content/uploads/2013/02/Resep-ayam-bakar-kecap.jpg" alt="Mountain View" style="width:80%;height:80%;">
-						<small> <?php echo $data['menudt']->picture; ?></small>
+						
+						<h3> <?php echo $data['menudt']->picture; ?></h3>
 
 					</div>
 					<div class="col-md-6">

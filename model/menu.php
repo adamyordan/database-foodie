@@ -60,8 +60,8 @@
 			}
 		}
 
-		public static function daily_menu() {
-			$result = DB::query("SELECT * FROM MENU_HARIAN MH, MENU M WHERE namamenu = nama ORDER BY namamenu ASC LIMIT 10");
+		public static function daily_menu($date, $group, $sort) {
+			$result = DB::query("SELECT * FROM MENU_HARIAN MH, MENU M WHERE namamenu = nama AND DATE(waktu) = '$date' ORDER BY $group $sort");
 			if($result == false || $result->rowCount() <= 0) {
 				 return null;				
 			} else {
