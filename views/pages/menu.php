@@ -29,7 +29,7 @@
 						<?php } ?>
 						<input type="submit">
 					</form>
-				 
+				<?php if (empty($data['dmenus']) === false) : ?>
 				<?php $count = 1; $page = 1;?>
 				<?php foreach ($data['dmenus'] as $dmenu ) : ?>
 				<?php if ($count == 1 || $count % 15 == 1) : ?>				
@@ -67,7 +67,9 @@
 						<li <?php echo $a == 1 ? 'class="active"':''; ?>><a class="pageNum"><?php echo floor (($a/15) + 1); ?></a></li>
 		    			<?php endfor; ?>
 					</div>
-								
+				<?php else : ?>				
+					<h3> Tidak ada pembuatan menu di tanggal tersebut </h3>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
