@@ -10,7 +10,7 @@
 			</ul>
 
 			<div class="list-group">
-				<a href="?p=look" class="list-group-item">Home</a>
+				<a href="?p=home" class="list-group-item">Home</a>
 				<?php if ($data['user']->job == "Chef" || $data['user']->job == "Kasir" || 
 					$data['user']->job == "Manager"): ?>
 					<a href="?p=menu" class="list-group-item">Menu</a>
@@ -36,19 +36,4 @@
 	</div>
 </div>
 
-<script>
-	$('#btn_logout').click(function() {
-
-        $.get(
-            "?p=api_logout",
-            {},
-            function(data) {
-            	if(data.status == "ok") {
-	                window.location.href = "index.php";
-            	}
-            },
-            "json"
-        );
-
-	});
-</script>
+<script type="text/javascript" src="resources/js/logout.js"></script>

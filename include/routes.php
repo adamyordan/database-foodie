@@ -1,10 +1,10 @@
 <?php
 	
 	$CONTROLLER_LIST = [
-		'pages_controller' => 'PagesController',
-		'api_controller'  => 'ApiController',
-		'order_controller'  => 'OrderController',
-		'purchase_controller'  => 'PurchaseController'
+		'pages_controller'    => 'PagesController',
+		'api_controller'      => 'ApiController',
+		'order_controller'    => 'OrderController',
+		'purchase_controller' => 'PurchaseController'
 	];
 
 	require_once('include/view.php');
@@ -39,7 +39,5 @@
 			call('PagesController', 'error');
 		}
 	}
-
-
 
 ?>

@@ -1,6 +1,7 @@
 <?php
 	require_once('model/user.php');
 	require_once('model/purchase.php');
+	require_once('model/order.php');
 
 	class ApiController {
 
@@ -101,6 +102,41 @@
 			View::json($data);
 		}
 
+		public static function api_menu_get() {
+			$limit  = isset($_POST['limit'])  ? $_POST['limit']  : 10;
+			$offset = isset($_POST['offset']) ? $_POST['offset'] : 0;
+
+			$menus = Menu::getLatest($limit, $offset);
+
+			$data = new stdClass();
+			$data->status = "ok";
+			$data->menus = $menus;
+			View::json($data);
+		}
+
+		public static function api_order_get() {
+			$limit  = isset($_POST['limit'])  ? $_POST['limit']  : 10;
+			$offset = isset($_POST['offset']) ? $_POST['offset'] : 0;
+
+			$orders = Order::getLatest($limit, $offset);
+
+			$data = new stdClass();
+			$data->status = "ok";
+			$data->orders = $orders;
+			View::json($data);
+		}
+
+		public static function api_purchase_get() {
+			$limit  = isset($_POST['limit'])  ? $_POST['limit']  : 10;
+			$offset = isset($_POST['offset']) ? $_POST['offset'] : 0;
+
+			$purchases = Purchase::getLatest($limit, $offset);
+
+			$data = new stdClass();
+			$data->status = "ok";
+			$data->purchases = $purchases;
+			View::json($data);
+		}
 
 		private static function checkAuth() {
 			if(empty($_SESSION['login_user'])){
@@ -109,7 +145,6 @@
 			$login_user_email = $_SESSION['login_user'];
 			return User::find($login_user_email);			
 		}
-
 
 	}
 ?>

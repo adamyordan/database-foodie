@@ -1,54 +1,108 @@
-<div class="row">
-	<div class="col-md-4 col-md-offset-4">
-    	<div class="login-form">
-            <form action="?p"></form>
-            <div class="form-group">
-	            <input type="text" class="form-control login-field" value="" placeholder="Enter your email" id="login_name">
-    	        <label class="login-field-icon fui-user" for="login-name"></label>
-            </div>
+<div class="col-md-3">
+	<?php require_once('views/partials/sidebar.php'); ?>
+</div>
+<div class="col-md-9">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="well">
 
-            <div class="form-group">
-	            <input type="password" class="form-control login-field" value="" placeholder="Password" id="login_pass">
-	            <label class="login-field-icon fui-lock" for="login-pass"></label>
-            </div>
+			<!-- REGION FOR CHEF  -->
+			<?php if ($data['user']->job == "Chef"): ?>
 
-            <button id="btn_login" class="btn btn-primary btn-lg btn-block">Log in</button>
-	    </div>
-        <br>
-        <div id="login-msg-container">
-        </div>
+				<div class="row">
+					<div class="col-xs-6">
+						<h5>Menu</h5>				
+					</div>
+					<div class="col-xs-6">
+						<button class="btn btn-sm btn-primary pull-right" 
+							id="btn-refresh" onclick='refresh("menu")'>
+							<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+						</button>
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-mini">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Nama</th>
+								<th>Deskripsi</th>
+								<th>Harga</th>
+								<th>Jumlah tersedia</th>
+								<th>Kategori</th>
+							</tr>
+						</thead>
+						<tbody id="data_row_container"></tbody> 
+					</table>
+				</div>
+			<!-- ENDREGION  -->
+
+			<!-- REGION FOR KASIR  -->
+			<?php elseif ($data['user']->job == "Kasir"): ?>
+
+				<div class="row">
+					<div class="col-xs-10">
+						<h5>Pemesanan</h5>				
+					</div>
+					<div class="col-xs-2">
+						<button class="btn btn-sm btn-primary pull-right" 
+							id="btn-refresh" onclick='refresh("menu")'>
+							<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+						</button>
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-mini">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Nomor Nota</th>
+								<th>Waktu Bayar</th>
+								<th>Total</th>
+								<th>Kasir</th>
+								<th>Mode Bayar</th>
+							</tr>
+						</thead>
+						<tbody id="data_row_container"></tbody> 
+					</table>
+				</div>
+			<!-- ENDREGION  -->
+
+			<!-- REGION FOR STAF  -->
+			<?php elseif ($data['user']->job == "Staf"|| $data['user']->job == "Manager"): ?>
+
+				<div class="row">
+					<div class="col-xs-10">
+						<h5>Pembelian</h5>				
+					</div>
+					<div class="col-xs-2">
+						<button class="btn btn-sm btn-primary pull-right" 
+							id="btn-refresh" onclick='refresh("purchase")'>
+							<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+						</button>
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-mini">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Nomor</th>
+								<th>Waktu</th>
+								<th>Supplier</th>
+								<th>Staf</th>
+							</tr>
+						</thead>
+						<tbody id="data_row_container"></tbody> 
+					</table>
+				</div>
+
+			<?php endif; ?>
+			<!-- ENDREGION  -->
+
+			</div>
+		</div>
 	</div>
 </div>
 
-<script>
-
-    $("#btn_login").click(function(){
-
-        $.post(
-            "?p=api_login",
-            {"email" : $("#login_name").val(), "password" : $("#login_pass").val()},
-            function(data) {
-                if (data.status == "ok") {
-                    $(`
-                        <div class="alert alert-success">
-                            <strong>Login success,</strong> redirecting...
-                        </div>
-                    `).fadeIn(200).prependTo('#login-msg-container');
-                    setTimeout(function() {
-                      window.location.href = "?p=look";
-                    }, 1000);
-                } else {
-                    $(`
-                        <div class="alert alert-danger">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <strong>Failed!</strong> Login Failed
-                        </div>
-                    `).fadeIn(200).prependTo('#login-msg-container');
-                }
-            },
-            "json"
-        );
-
-    });
-
-</script>
+<script type="text/javascript" src="resources/js/dashboard-home.js"></script>
