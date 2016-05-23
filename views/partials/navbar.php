@@ -9,12 +9,5 @@
 		</button>
 		<a class="navbar-brand" href="#">Foodie</a>
 	</div>
-
-<!-- 	<ul class="nav navbar-nav navbar-right">
-		<li><a href="?p=look">Something</a></li>
-		<li><a href="?p=home">Login</a></li>
-	</ul>
- -->
-
   </div>
 </div>

@@ -84,6 +84,28 @@
 			}
 		}
 
+		public static function getLatest($limit, $offset) {
+			$result = DB::query("SELECT * FROM MENU_HARIAN MH, MENU M WHERE namamenu = nama ORDER BY waktu DESC OFFSET $offset LIMIT $limit");
+			if($result == false || $result->rowCount() <= 0) {
+				return null;
+			} else {
+				$menus = array();
+				foreach ($result->fetchAll() as $row) {
+					$menu = new Menu();
+					$menu->name = $row['namamenu'];			
+					$menu->time = $row['waktu'];
+					$menu->amount = $row['jumlah'];
+					$menu->emailC = $row['emailchef'];
+					$menu->description = $row['deskripsi'];
+					$menu->price = $row['harga'];
+					$menu->category = $row['kategori'];
+					array_push($menus, $menu);
+				}
+				return $menus;		
+			}	
+		}
+
+
 
 		
 

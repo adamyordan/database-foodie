@@ -87,5 +87,23 @@
 
 			return "ok";
 		}
+
+		public static function getLatest($limit, $offset) {
+			$result = DB::query("SELECT * FROM PEMBELIAN ORDER BY waktu DESC OFFSET $offset LIMIT $limit");
+			if($result == false || $result->rowCount() <= 0) {
+				return null;
+			} else {
+				$purchases = array();
+				foreach ($result->fetchAll() as $row) {
+					$purchase = new Purchase();
+					$purchase->no = $row['nomornota'];
+					$purchase->time = $row['waktu'];
+					$purchase->supplier = $row['namasupplier'];
+					$purchase->staff = $row['emailstaf'];				
+					array_push($purchases,$purchase);
+				}
+				return $purchases;
+			}	
+		}
 	}
 ?>

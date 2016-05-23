@@ -8,16 +8,20 @@
 
 	class PagesController {
 
-		public static function home() {
+		public static function login() {
 			if(!empty($_SESSION['login_user'])){
 				header('Location: index.php?p=look');
 			}
-			View::render('pages/home',[]);
+			View::render('pages/login',[]);
 		}
 
-		public static function look() {
+		public static function home() {
 			$user = self::checkAuth();
-			View::render('pages/look', ['user' => $user]);
+			View::render('pages/home', ['user' => $user]);
+		}
+
+		public static function error() {
+			View::render('pages/error',[]);
 		}
 
 		public static function purchase() {
@@ -25,7 +29,7 @@
 			$suppliers = Supplier::all();
 			$materials = Material::all();
 			$units     = Unit::all();
-			View::render('pages/purchase', [
+			View::render('pages/newpurchase/index', [
 				'user'      => $user,
 				'suppliers' => $suppliers,
 				'materials' => $materials,
@@ -33,31 +37,33 @@
 				]);
 		}
 
-		public static function error() {
-			View::render('pages/error',[]);
-		}
 
 		public static function order() {
 			$user = self::checkAuth();
 			$orders = Order::orderList();
-			View::render('pages/order',[
+			View::render('pages/order/index',[
 				'user' => $user,
 				'orders' => $orders
 				]);
 		}
 		
+		public static function orderDetail() {
+			$user = self::checkAuth();
+			View::render('pages/order/detail',['user' => $user]);
+		}
+
 		public static function purchaseList() {
 			$user = self::checkAuth();
 			$purchases = Purchase::all();
-			View::render('pages/purchase-list',[
+			View::render('pages/purchase/index',[
 				'user' => $user,
 				'purchases' => $purchases
 			]);
 		}
 
-		public static function orderDetail() {
+		public static function purchaseDetail() {
 			$user = self::checkAuth();
-			View::render('pages/order-detail',['user' => $user]);
+			View::render('pages/purchase/detail',['user' => $user]);
 		}
 
 		public static function menu() {
@@ -73,7 +79,7 @@
 				$menus = Menu::all();
 				$user = self::checkAuth();
 				
-				View::render('pages/menu',[
+				View::render('pages/menu/index',[
 					'user' => $user, 
 					'menus' => $menus,
 					'dmenus' => $dmenus
@@ -83,7 +89,7 @@
 				$dmenus = Menu::all();
 				$user = self::checkAuth();
 				
-				View::render('pages/menu',[
+				View::render('pages/menu/index',[
 					'user' => $user, 
 					'menus' => $menus,					
 					'dmenus' => $dmenus
@@ -96,22 +102,17 @@
 			$time = urldecode ($_GET['time']);
 			$user = self::checkAuth();
 			$menudt = Menu::menu_detail($name, $time);
-			View::render('pages/menu-detail',[
+			View::render('pages/menu/detail',[
 				'user' => $user,
 				'menudt' => $menudt
 				]);
 
 		}		
 		
-		public static function purchaseDetail() {
-			$user = self::checkAuth();
-			View::render('pages/purchase-detail',['user' => $user]);
-		}
-
 		// non route methods
 		private static function checkAuth() {
 			if(empty($_SESSION['login_user'])){
-				header('Location: index.php');
+				header('Location: index.php?p=login');
 			}
 			$login_user_email = $_SESSION['login_user'];
 			return User::find($login_user_email);			
