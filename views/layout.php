@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Basis Data</title>
+	<title><?php echo SITENAME; ?></title>
 
 	<link rel="stylesheet" type="text/css" href="resources/css/vendor/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/vendor/flat-ui.css">
