@@ -9,13 +9,15 @@
 			<div class="well">
 				<h5>List Pembelian Bahan</h5>
 				<div>
-					<div class="col-md-1 fui-calendar datepickerimage calendar-off">
-					</div>
-
-					<div class="col-md-5">
-						<span class="dateValue"><?php echo date('m/d/Y'); ?></span>
-					</div>
+					<div class="col-md-3">
+						<div class="col-md-1 fui-calendar datepickerimage calendar-off">
+						</div>
 						
+						<div class="col-md-2">
+							<span class="dateValue"><?php echo date('m/d/Y'); ?></span>
+						</div>
+					</div>
+					
 					<select class="group selection col-md-3">
 					  	<option value="nomornota">Nomor Nota</option>
 					  	<option value="waktu">Waktu</option>

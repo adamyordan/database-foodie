@@ -74,7 +74,34 @@
 				return $purchases;
 			}
 		}
-
+		
+		public static function sortOnDate($group, $sort, $date)
+		{
+			$result = DB::query("SELECT * FROM PEMBELIAN WHERE WAKTU::DATE='$date' ORDER BY $group $sort");
+			if ($result == false || $result->rowCount() == 0) {
+				return null;
+			}
+			else {
+				$purchases = array();
+				foreach ($result->fetchAll() as $row) {
+					$purchase = new Purchase();
+					$purchase->no = $row['nomornota'];
+					$purchase->time = $row['waktu'];
+					$purchase->supplier = $row['namasupplier'];
+					$staffEmail = $row['emailstaf'];
+					
+					$staffData = DB::query("SELECT * FROM USERS WHERE email='$staffEmail'");
+					
+					forEach ($staffData->fetchAll() as $rowTemp) {
+						$purchase->staff = $rowTemp['nama'];
+					}
+					
+					array_push($purchases,$purchase);
+				}
+				return $purchases;
+			}
+		}
+		
 		public static function save($p) {
 			$result = DB::query("INSERT INTO PEMBELIAN VALUES ('$p->no', '$p->time', '$p->supplier', '$p->staff')");
 			if ($result == false) return "failed in relation PEMBELIAN";
@@ -103,7 +130,35 @@
 					array_push($purchases,$purchase);
 				}
 				return $purchases;
-			}	
+			}
+		}
+		
+		public static function getWithinPeriod($startDate, $endDate)
+		{
+			$result = DB::query("SELECT * FROM PEMBELIAN AS P WHERE (((P.WAKTU)::DATE) >= '$startDate') AND (((P.WAKTU)::DATE) <= '$endDate') ORDER BY P.WAKTU");
+			
+			if (!$result || $result->rowCount() == 0) {
+				return null;
+			}
+			else {
+				$purchases = array();
+				foreach ($result->fetchAll() as $row) {
+					$purchase = new Purchase();
+					$purchase->no = $row['nomornota'];
+					$purchase->time = $row['waktu'];
+					$purchase->supplier = $row['namasupplier'];
+					$staffEmail = $row['emailstaf'];
+					
+					$staffData = DB::query("SELECT * FROM USERS WHERE email='$staffEmail'");
+					
+					forEach ($staffData->fetchAll() as $rowTemp) {
+						$purchase->staff = $rowTemp['nama'];
+					}
+					
+					array_push($purchases,$purchase);
+				}
+				return $purchases;
+			}
 		}
 	}
 ?>

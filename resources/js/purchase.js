@@ -14,46 +14,31 @@ $(document).ready (function () {
         $supplier = $(this).parent().parent().children().eq(3).html();
         $staff = $(this).parent().parent().children().eq(4).html();
 		
-        // $.post(
-            // "?p=purchaseDetail",
-            // {"nomornota" : $no},
-            // function(data) {
-				// alert(data);
-                // if (data.status == "ok") {
-                    // getDetail($no,$time,$supplier,$staff,data);
-                // } else {
-                   // $('.modal-body').html('');
-                // },
-				// "json"
-            // }
-        // );
-    });
-	
-	 $(".selection").change(function(){
-        $sort1 = $('.group').val();
-        $sort2 = $('.sort').val();
-         $.post(
-            "?p=purchaseSort",
-            {"sort1" : $sort1,"sort2" : $sort2},
+        $.post(
+            "?p=purchaseDetails",
+            {"notapembelian" : $no},
             function(data) {
                 if (data.status == "ok") {
-                    sortResult(data);
+                    getDetail($no,$time,$supplier,$staff,data);
                 } else {
-                   alert('gagal');
+                   $('.modal-body').html('');
                 }
             },
-            "json"
+			"json"
         );
     });
 	
+	 $(".selection").change(sortData);
+	
 	$(".datepicker").datepicker({
-
 		onSelect: function(dateText, inst) {
       			$(".dateValue").html(dateText);
       			$(".datepicker").hide();
+				
+				sortData();
     	}
 	}).hide().css("position","absolute");
-
+	
     $(".datepickerimage").click(function() {
     	if ($(this).hasClass("calendar-off")) {
     		$(".calendar-off").addClass('calendar-on');
@@ -78,6 +63,25 @@ $(document).ready (function () {
 		allowClear: true
 	});
 });
+
+function sortData()
+{
+	$sort1 = $('.group').val();
+	$sort2 = $('.sort').val();
+	$dateVal = $('.dateValue').html().split("/");
+	$.post(
+		"?p=purchaseSort",
+		{"sort1" : $sort1,"sort2" : $sort2, "date" : $dateVal},
+		function(data) {
+			if (data.status == "ok") {
+				sortResult(data);
+			} else {
+				$('.table-div').html('<h4>Hari Ini Tidak Ada Pemesanan :(</h4>');
+			}
+		},
+		"json"
+	);
+}
 
 function getDetail ($no,$time,$supplier,$staff,$data) {
     $tbody = generateTable($data.detail.ingredientpurchases);
