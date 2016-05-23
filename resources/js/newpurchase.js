@@ -69,6 +69,11 @@ function delete_row(i) {
 
 function calculate_total(i) {
 	$('#row_total_' + i).val($('#row_hargasatuan_' + i).val() * $('#row_jumlah_' + i).val());
+
+	var grandtotal = 0;
+	var subtotals = $("[name='mtotal[]']").map(function() {return $(this).val();}).get()
+	subtotals.forEach(function (st) {grandtotal += parseInt(st);});
+	$('#grandtotal').text(grandtotal);
 }
 
 function getDuplicate() {
@@ -137,6 +142,8 @@ function doPurchase() {
 					title: 'Success',
 					text : 'this purchase has been saved',
 					type : 'success',					
+				}).then(function(isConfirm) {
+					window.location.href = "?p=purchase";
 				});
         	} else {
 				swal({

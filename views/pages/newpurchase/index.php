@@ -27,26 +27,40 @@
 						</div>
 					</div>
 					
-					<table class="table table-mini">
-						<thead>
-							<tr>
-								<td>Nama Bahan</td>
-								<td>Harga Satuan</td>
-								<td>Satuan</td>
-								<td>Jumlah</td>
-								<td>Total</td>
-								<td></td>
-							</tr>
-						</thead>
-						<tbody id="purchase_row_container"></tbody>
-					</table>
-					<button id="btn_more" class="btn btn-info btn-sm">Add More</button>
+					<div class="table-responsive">
+						<table class="table table-mini">
+							<thead>
+								<tr>
+									<td>Nama Bahan</td>
+									<td>Harga Satuan</td>
+									<td>Satuan</td>
+									<td>Jumlah</td>
+									<td>Total</td>
+									<td></td>
+								</tr>
+							</thead>
+							<tbody id="purchase_row_container"></tbody>
+							<tfoot>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="text-right"><p>Grand Total :</p></td>
+									<td><b><p id="grandtotal">0</p></b></td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
 
-					<div class="form-group">
-						<div class="col-sm-offset-10">
-							<button class="btn btn-primary" id="btn_purchase2">Purchase</button>
+					<div class="row">
+						<div class="col-xs-6">
+							<button id="btn_more" class="btn btn-info btn-sm btn-block">Add More</button>
+						</div>
+						<div class="col-xs-6">
+							<button class="btn btn-primary btn-block" id="btn_purchase2">Purchase</button>
 						</div>
 					</div>
+
 				</div>
 			</div>
 

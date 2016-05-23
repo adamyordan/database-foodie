@@ -7,30 +7,34 @@
 			<div class="well">
 
 			<!-- REGION FOR CHEF  -->
-			<?php if ($data['user']->job == "Chef" || $data['user']->job == "Manager"): ?>
+			<?php if ($data['user']->job == "Chef"): ?>
 
 				<div class="row">
-					<div class="col-xs-10">
+					<div class="col-xs-6">
 						<h5>Menu</h5>				
 					</div>
-					<div class="col-xs-2">
-						<button class="btn btn-sm btn-primary" id="btn-refresh" 
-							onclick='refresh("menu")'> refresh	</button>
+					<div class="col-xs-6">
+						<button class="btn btn-sm btn-primary pull-right" 
+							id="btn-refresh" onclick='refresh("menu")'>
+							<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+						</button>
 					</div>
 				</div>
-				<table class="table table-mini">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Nama</th>
-							<th>Deskripsi</th>
-							<th>Harga</th>
-							<th>Jumlah tersedia</th>
-							<th>Kategori</th>
-						</tr>
-					</thead>
-					<tbody id="data_row_container"></tbody> 
-				</table>
+				<div class="table-responsive">
+					<table class="table table-mini">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Nama</th>
+								<th>Deskripsi</th>
+								<th>Harga</th>
+								<th>Jumlah tersedia</th>
+								<th>Kategori</th>
+							</tr>
+						</thead>
+						<tbody id="data_row_container"></tbody> 
+					</table>
+				</div>
 			<!-- ENDREGION  -->
 
 			<!-- REGION FOR KASIR  -->
@@ -41,49 +45,57 @@
 						<h5>Pemesanan</h5>				
 					</div>
 					<div class="col-xs-2">
-						<button class="btn btn-sm btn-primary" id="btn-refresh" 
-							onclick='refresh("order")'> refresh	</button>
+						<button class="btn btn-sm btn-primary pull-right" 
+							id="btn-refresh" onclick='refresh("menu")'>
+							<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+						</button>
 					</div>
 				</div>
-				<table class="table table-mini">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Nomor Nota</th>
-							<th>Waktu Bayar</th>
-							<th>Total</th>
-							<th>Kasir</th>
-							<th>Mode Bayar</th>
-						</tr>
-					</thead>
-					<tbody id="data_row_container"></tbody> 
-				</table>
+				<div class="table-responsive">
+					<table class="table table-mini">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Nomor Nota</th>
+								<th>Waktu Bayar</th>
+								<th>Total</th>
+								<th>Kasir</th>
+								<th>Mode Bayar</th>
+							</tr>
+						</thead>
+						<tbody id="data_row_container"></tbody> 
+					</table>
+				</div>
 			<!-- ENDREGION  -->
 
 			<!-- REGION FOR STAF  -->
-			<?php elseif ($data['user']->job == "Staf"): ?>
+			<?php elseif ($data['user']->job == "Staf"|| $data['user']->job == "Manager"): ?>
 
 				<div class="row">
 					<div class="col-xs-10">
 						<h5>Pembelian</h5>				
 					</div>
 					<div class="col-xs-2">
-						<button class="btn btn-sm btn-primary" id="btn-refresh" 
-							onclick='refresh("purchase")'> refresh	</button>
+						<button class="btn btn-sm btn-primary pull-right" 
+							id="btn-refresh" onclick='refresh("purchase")'>
+							<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+						</button>
 					</div>
 				</div>
-				<table class="table table-mini">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Nomor</th>
-							<th>Waktu</th>
-							<th>Supplier</th>
-							<th>Staf</th>
-						</tr>
-					</thead>
-					<tbody id="data_row_container"></tbody> 
-				</table>
+				<div class="table-responsive">
+					<table class="table table-mini">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Nomor</th>
+								<th>Waktu</th>
+								<th>Supplier</th>
+								<th>Staf</th>
+							</tr>
+						</thead>
+						<tbody id="data_row_container"></tbody> 
+					</table>
+				</div>
 
 			<?php endif; ?>
 			<!-- ENDREGION  -->
