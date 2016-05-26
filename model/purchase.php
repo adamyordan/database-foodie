@@ -23,7 +23,8 @@
 
 		public static function all()
 		{
-			$result = DB::query("SELECT * FROM PEMBELIAN ORDER BY nomornota DESC");
+			$curDate = date("Y-m-d");
+			$result = DB::query("SELECT * FROM PEMBELIAN WHERE WAKTU::DATE='$curDate' ORDER BY WAKTU DESC");
 			if (!$result || $result->rowCount() == 0) {
 				return null;
 			}

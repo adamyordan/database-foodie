@@ -9,15 +9,17 @@
 			<div class="well">
 				<h5>List Pembelian Bahan</h5>
 				<div>
-					<div class="col-md-3">
-						<div class="col-md-1 fui-calendar datepickerimage calendar-off">
-						</div>
-						
-						<div class="col-md-2">
-							<span class="dateValue"><?php echo date('m/d/Y'); ?></span>
-						</div>
+					<div class="col-md-1 fui-calendar datepickerimage calendar-off">
 					</div>
 					
+					<div class="col-md-2">
+						<span class="dateValue datepickerimage calendar-off"><?php echo date('d/m/Y'); ?></span>
+					</div>
+				
+					<div class="col-md-2 fui-list-numbered">
+						<span>Sort By</span>
+					</div>
+				
 					<select class="group selection col-md-3">
 					  	<option value="nomornota">Nomor Nota</option>
 					  	<option value="waktu">Waktu</option>
@@ -36,6 +38,7 @@
 				<div class="table-div">
 					
 					<?php $count = 1; $page = 1; ?>
+					<?php if (sizeof ($data['purchases']) > 0) : ?>	
 					<?php foreach ($data['purchases'] as $purchase) : ?>
 					<?php if ($count % 15 == 1) : ?>
 					
@@ -70,6 +73,10 @@
 							<li <?php if ($i == 1) echo 'class="active"'?>><a class="pageNum"><?=$i?></a></li>
 						<?php endfor; ?>
 					</div>
+					<?php endif; ?>
+					<?php if (sizeof ($data['purchases']) == 0) : ?>
+						<h4>Hari Ini Tidak Ada Pembelian :( </h4>
+					<?php endif; ?>
 				</div>
 			</div>
 			
