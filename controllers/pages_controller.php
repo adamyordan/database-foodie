@@ -46,11 +46,6 @@
 				'orders' => $orders
 				]);
 		}
-		
-		public static function orderDetail() {
-			$user = self::checkAuth();
-			View::render('pages/order/detail',['user' => $user]);
-		}
 
 		public static function purchaseList() {
 			$user = self::checkAuth();
@@ -59,11 +54,6 @@
 				'user' => $user,
 				'purchases' => $purchases
 			]);
-		}
-
-		public static function purchaseDetail() {
-			$user = self::checkAuth();
-			View::render('pages/purchase/detail',['user' => $user]);
 		}
 
 		public static function menu() {
