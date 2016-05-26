@@ -63,9 +63,8 @@
 		public static function menuDetail() {
 			$user = self::checkAuth();
 			self::checkRole($user, ["Chef", "Kasir", "Manager"]);
-			$name = urldecode ($_GET['name']);
-			$time = urldecode ($_GET['time']);
-			$menudt = Menu::menu_detail($name, $time);
+			$name = urldecode ($_GET['name']);			
+			$menudt = Menu::menu_detail($name);
 			View::render('pages/menu/detail',[
 				'user' => $user,
 				'menudt' => $menudt

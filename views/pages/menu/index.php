@@ -42,22 +42,24 @@
 								}
 							}
 						?>
-						<select name="group" class="form-control">
-							<option <?php echo $selectNama; ?> val="nama">Nama</option>
-							<option <?php echo $selectHarga; ?> val="harga">Harga</option>
-							<option <?php echo $selectKategori; ?> val="kategori">Kategori</option>
-						</select>
-						<select name="sort" class="form-control" val="test">
-							<option <?php echo $selectAsc; ?> val="asc">ASC</option>
-							<option <?php echo $selectDesc; ?> val="desc">DESC</option>
-						</select>
+						<div class="row">					
+							<select name="group col-md-6" class="form-control">
+								<option <?php echo $selectNama; ?> val="nama">Nama</option>
+								<option <?php echo $selectHarga; ?> val="harga">Harga</option>
+								<option <?php echo $selectKategori; ?> val="kategori">Kategori</option>
+							</select>
+							<select name="group col-md-6" class="form-control" val="test">
+								<option <?php echo $selectAsc; ?> val="asc">ASC</option>
+								<option <?php echo $selectDesc; ?> val="desc">DESC</option>
+							</select>
+						</div>
 						<br>
 						<?php if (empty($_POST['date']) === false){ ?>
 						<small>Tanggal : <input name="date" type="text" class="datePicker" value="<?php echo $_POST['date']; ?>"></small>
 						<?php } else { ?>
 						<small>Tanggal : <input name="date" type="text" class="datePicker" value="<?php echo date('d/m/Y'); ?>"></small>
 						<?php } ?>
-						<input type="submit">
+						<button class="btn" type="submit">Sort</button>
 					</form>
 				<?php if (empty($data['dmenus']) === false) : ?>
 				<?php $count = 1; $page = 1;?>
@@ -84,7 +86,7 @@
 							<td> <?php echo $dmenu->price; ?> </td>
 							<td> <?php echo $dmenu->amount; ?> </td>
 							<td> <?php echo $dmenu->category; ?> </td>
-							<td><a href="?p=menuDetail&name=<?php echo $dmenu->name . "&time=" . $dmenu->time;?>">Lihat</a></td>
+							<td><a href="?p=menuDetail&name=<?php echo $dmenu->name?>">Lihat</a></td>
 						</tr>
 				<?php if ($count++ % 15 == 0 || $count > sizeof($data['dmenus']) ) : ?>
 					</tbody>
