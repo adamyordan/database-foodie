@@ -31,32 +31,53 @@
 		public static function menu() {
 			$user = self::checkAuth();
 			self::checkRole($user, ["Chef", "Kasir", "Manager"]);
+			if(isset($_POST['date'])) {
+				if (empty($_POST['date']) === false){
+					$var = $_POST['date'];
+					$tgl = str_replace('/', '-', $var);
+					$date = date('Y-m-d', strtotime($tgl));
 
-			if (empty($_POST['date']) === false){
-				$var = $_POST['date'];
-				$tgl = str_replace('/', '-', $var);
-				$date = date('Y-m-d', strtotime($tgl));
+					$group = $_POST['group'];
+					$sort = $_POST['sort'];
+					$dmenus = Menu::daily_menu($date, $group, $sort);
+				
+					$menus = Menu::all();
+					
+					View::render('pages/menu/index',[
+						'user' => $user, 
+						'menus' => $menus,
+						'dmenus' => $dmenus
+						]);
+				} else {
+					$menus = Menu::all();
+					$dmenus = Menu::all();
+					
+					View::render('pages/menu/index',[
+						'user' => $user, 
+						'menus' => $menus,					
+						'dmenus' => $dmenus
+						]);
+				}
+			} else {				
+					$_POST['date'] = date('d/m/Y');							
+					$_POST['group'] = 'Nama';								
+					$_POST['sort'] = 'ASC';				
 
-				$group = $_POST['group'];
-				$sort = $_POST['sort'];
-				$dmenus = Menu::daily_menu($date, $group, $sort);
-			
-				$menus = Menu::all();
+					$var = $_POST['date'];
+					$tgl = str_replace('/', '-', $var);
+					$date = date('Y-m-d', strtotime($tgl));
+
+					$group = $_POST['group'];
+					$sort = $_POST['sort'];
+					$dmenus = Menu::daily_menu($date, $group, $sort);
 				
-				View::render('pages/menu/index',[
-					'user' => $user, 
-					'menus' => $menus,
-					'dmenus' => $dmenus
-					]);
-			} else {
-				$menus = Menu::all();
-				$dmenus = Menu::all();
-				
-				View::render('pages/menu/index',[
-					'user' => $user, 
-					'menus' => $menus,					
-					'dmenus' => $dmenus
-					]);
+					$menus = Menu::all();
+					
+					View::render('pages/menu/index',[
+						'user' => $user, 
+						'menus' => $menus,
+						'dmenus' => $dmenus
+						]);					
 			}
 		}
 
