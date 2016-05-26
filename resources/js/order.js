@@ -42,7 +42,7 @@ $(document).ready (function () {
                 if (data.status == "ok") {
                     sortResult(data);
                 } else {
-                   alert('gagal');
+                   $('.table-div').html('<h4>Tidak Ada Pemesanan Hari ini</h4>');
                 }
             },
             "json"
@@ -67,7 +67,7 @@ $(document).ready (function () {
                         if (data.status == "ok") {
                             sortResult(data);
                         } else {
-                           $('.table-div').html('<h4>Hari Ini Tidak Ada Pemesanan :(</h4>');
+                           $('.table-div').html('<h4>Tidak Ada Pemesanan Hari ini</h4>');
                         }
                     },
                     "json"
@@ -89,13 +89,11 @@ $(document).ready (function () {
     });
 
 	$('.sort').select2({
-		placeholder: "Sort By",
-  		allowClear: true
+		placeholder: "Sort By"
 	});
 
 	$('.group').select2({
-		placeholder: "Group By",
-		allowClear: true
+		placeholder: "Group By"
 	});
 
 });
@@ -104,17 +102,26 @@ function getDetail ($nomornota,$waktupesan,$waktubayar,$kasir,$total,$mode,$data
     $tbody = generateTable($data);
     $('.modal-body').html (
         '<div class="row">' +
-            '<div class="col-md-6">' +
-                '<p>Nomor Nota : '+$nomornota+'</p>' +
-                '<p>Waktu Pesan :'+$waktupesan+' </p>' +
-                '<p>Waktu Bayar : '+$waktubayar+'</p>' +
+            '<div class="col-md-2">' +
+                '<p>Nomor Nota </p>' +
+                '<p>Waktu Pesan</p>' +
+                '<p>Waktu Bayar</p>' +
             '</div>' +
-            '<div class="col-md-6">' +
-                '<p>Kasir :'+$kasir+' </p>' +
-                '<p>Mode Pemabayaran : '+$mode+'</p>' +
-                '<p>Total : '+$total+'</p>' +
-                '</div>' +
-            '</div>'+
+            '<div class="col-md-3">' +
+                '<p><small>'+$nomornota+'</small></p>' +
+                '<p><small>'+$waktupesan+'</small></p>' +
+                '<p><small>'+$waktubayar+'</small></p>' +
+            '</div>' +
+            '<div class="col-md-2 col-md-offset-1">' +
+                '<p>Kasir</p>' +
+                '<p>Mode Bayar</p>' +
+                '<p>Total</p>' +
+            '</div>' +
+          '<div class="col-md-3">' +
+                '<p><small>'+$kasir+'</small></p>' +
+                '<p><small>'+$mode+'</small></p>' +
+                '<p><small>'+$total+'</small></p>' +
+            '</div>' +
         '<div>' +
 
         '<div class="row">'+
