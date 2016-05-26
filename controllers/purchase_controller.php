@@ -64,8 +64,8 @@
 				$sort1 = $_POST['sort1'];
 				$sort2 = $_POST['sort2'];
 				$yyyy  = $_POST['date'][2];
-				$dd    = $_POST['date'][1];
-				$mm    = $_POST['date'][0];
+				$mm    = $_POST['date'][1];
+				$dd    = $_POST['date'][0];
 				$detail = Purchase::sortOnDate($sort1,$sort2, $yyyy.'-'.$mm.'-'.$dd);
 				
 				if ($detail == null) {

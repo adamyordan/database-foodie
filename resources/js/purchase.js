@@ -31,6 +31,7 @@ $(document).ready (function () {
 	 $(".selection").change(sortData);
 	
 	$(".datepicker").datepicker({
+        dateFormat: 'dd/mm/yy',
 		onSelect: function(dateText, inst) {
       			$(".dateValue").html(dateText);
       			$(".datepicker").hide();
@@ -76,7 +77,7 @@ function sortData()
 			if (data.status == "ok") {
 				sortResult(data);
 			} else {
-				$('.table-div').html('<h4>Hari Ini Tidak Ada Pemesanan :(</h4>');
+				$('.table-div').html('<h4>Hari Ini Tidak Ada Pembelian :(</h4>');
 			}
 		},
 		"json"
