@@ -9,27 +9,6 @@ function insert_row(i) {
 	$(".selected-2").select2();		
 }
 
-
-$('#btn_purchase').click(function() {
-    $.post(
-        "?p=api_purchase",
-        {
-        	"no_nota" : $("[name='no_nota']").val(),
-        	"supplier" : $("[name='supplier']").val(),
-        	"staf" : "adam",
-        	"mname" : $("[name='mname[]']").map(function() {return $(this).val();}).get(),
-        	"mprice" : $("[name='mprice[]']").map(function() {return $(this).val();}).get(),
-        	"munit" : $("[name='munit[]']").map(function() {return $(this).val();}).get(),
-        	"mqty" : $("[name='mqty[]']").map(function() {return $(this).val();}).get(),
-        	"mtotal" : $("[name='mtotal[]']").map(function() {return $(this).val();}).get(),
-        },
-        function(data) {
-            alert(data.status);
-        },
-        "json"
-    );
-})
-
 $("#btn_more").click(function() {
 	insert_row(num_rows);
 	num_rows += 1;
@@ -155,5 +134,4 @@ function doPurchase() {
         },
         "json"
     );
-
 }

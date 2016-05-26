@@ -36,6 +36,19 @@
 			}
 		}
 
+		public static function list() {
+			$result = DB::query("SELECT nama FROM BAHAN_BAKU");
+			if($result == false || $result->rowCount() <= 0) {
+				return array();
+			} else {
+				$materials = array();
+				foreach ($result->fetchAll() as $row) {
+					array_push($materials, $row['nama']);
+				}
+				return $materials;		
+			}
+		}
+
 		public static function save($m) {
 			$result = DB::query("INSERT INTO BAHAN_BAKU VALUES ('$m->name', '$m->unit', '$m->stock')");
 		}

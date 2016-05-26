@@ -26,9 +26,9 @@
 
 		public static function purchase() {
 			$user = self::checkAuth();
-			$suppliers = Supplier::all();
-			$materials = Material::all();
-			$units     = Unit::all();
+			$suppliers = Supplier::list();
+			$materials = Material::list();
+			$units     = Unit::list();
 			View::render('pages/newpurchase/index', [
 				'user'      => $user,
 				'suppliers' => $suppliers,

@@ -46,7 +46,7 @@
 					</div>
 					<div class="col-xs-2">
 						<button class="btn btn-sm btn-primary pull-right" 
-							id="btn-refresh" onclick='refresh("menu")'>
+							id="btn-refresh" onclick='refresh("order")'>
 							<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
 						</button>
 					</div>

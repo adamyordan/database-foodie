@@ -1,4 +1,8 @@
 <?php
+	/**
+	 * Supplier - Model representing supplier
+	 *
+	 */
 	class Supplier {
 
 		public $name;
@@ -31,6 +35,19 @@
 					$supplier->email = $row['email'];
 					$supplier->address = $row['alamat'];
 					array_push($suppliers, $supplier);
+				}
+				return $suppliers;		
+			}
+		}
+
+		public static function list() {
+			$result = DB::query("SELECT nama FROM SUPPLIER");
+			if($result == false || $result->rowCount() <= 0) {
+				return array();
+			} else {
+				$suppliers = array();
+				foreach ($result->fetchAll() as $row) {
+					array_push($suppliers, $row['nama']);
 				}
 				return $suppliers;		
 			}

@@ -1,7 +1,11 @@
 <?php
+	/**
+	 * Unit - Model representing unit
+	 *
+	 */	
 	class Unit {
 
-		public static function all() {
+		public static function list() {
 			$result = DB::query("SELECT distinct satuanawal FROM KONVERSI");
 			if($result == false || $result->rowCount() <= 0) {
 				return null;

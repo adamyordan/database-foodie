@@ -1,4 +1,8 @@
 <?php
+	/**
+	 * User - Model representing user
+	 *
+	 */
 	class User {
 
 		public $email;
@@ -26,7 +30,11 @@
 				else if ($user->role == 'ST') $user->job = "Staf";
 				return $user;
 			}
+		}
 
+		public static function authenticate($email, $pass) {
+			$result = DB::query("SELECT count(*) AS c FROM USERS WHERE email='$email' AND password='$pass'");
+			return ($result != false && $result->fetch()['c'] > 0);
 		}
 	}
 ?>

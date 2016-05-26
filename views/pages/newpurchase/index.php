@@ -20,7 +20,7 @@
 						<div class="col-sm-10 col-md-4">
 							<select class="selected-2 form-control mini" name="supplier">
 								<?php foreach($data['suppliers'] as $supplier):
-									echo "<option value='$supplier->name'> $supplier->name </option>"; 
+									echo "<option value='$supplier'> $supplier </option>"; 
 									endforeach;
 								?>
 							</select>
@@ -75,7 +75,7 @@
 			<td>
 				<select class="selected-2 form-control mini" name="mname[]">
 					<?php foreach($data['materials'] as $material): 
-						echo "<option value='$material->name'> $material->name </option>";
+						echo "<option value='$material'> $material </option>";
 					endforeach; ?>
 				</select>
 			</td>
