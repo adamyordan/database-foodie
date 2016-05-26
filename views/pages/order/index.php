@@ -34,7 +34,7 @@
 
 				<div class ="datepicker"></div>
 
-				<div class = 'table-div' >
+				<div class = 'table-div table-responsive' >
 					<?php $count = 1; $page = 1;?>
 					<?php if (sizeof ($data['orders']) > 0) : ?>	
 					<?php foreach ($data['orders'] as $order ) : ?>
@@ -77,7 +77,7 @@
 					<?php endif; ?>
 
 					<?php if (sizeof ($data['orders']) == 0) : ?>
-						<h4>Hari Ini Tidak Ada Pemesanan :( </h4>
+						<h4>Tidak Ada Pemesanan Hari ini</h4>
 					<?php endif; ?>
 				</div>
 			</div>

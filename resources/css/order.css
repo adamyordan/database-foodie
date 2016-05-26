@@ -19,3 +19,33 @@ a,.datepickerimage {
 .datepicker {
 	z-index: 10;
 }
+
+.modal-header {
+	background-color : #1ABC9C;
+}
+
+.table-div {
+	margin-top: 3%;
+}
+
+h4{
+	color : #bdbdbd  ;
+	text-align: center;
+}
+
+.modal-header h4 {
+	color : white;
+}
+
+p {
+	color : #1ABC9C;
+}
+
+p small {
+	color : black;
+}
+
+.fui-document {
+	height : 20vh;
+}
+
