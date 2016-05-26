@@ -36,7 +36,7 @@
 			}
 		}
 
-		public static function list() {
+		public static function lists() {
 			$result = DB::query("SELECT nama FROM BAHAN_BAKU");
 			if($result == false || $result->rowCount() <= 0) {
 				return array();

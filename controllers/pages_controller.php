@@ -101,9 +101,9 @@
 		public static function purchase() {
 			$user = self::checkAuth();
 			self::checkRole($user, ["Staf", "Manager"]);
-			$suppliers = Supplier::list();
-			$materials = Material::list();
-			$units     = Unit::list();
+			$suppliers = Supplier::lists();
+			$materials = Material::lists();
+			$units     = Unit::lists();
 			View::render('pages/newpurchase/index', [
 				'user'      => $user,
 				'suppliers' => $suppliers,

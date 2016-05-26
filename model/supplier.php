@@ -40,7 +40,7 @@
 			}
 		}
 
-		public static function list() {
+		public static function lists() {
 			$result = DB::query("SELECT nama FROM SUPPLIER");
 			if($result == false || $result->rowCount() <= 0) {
 				return array();
