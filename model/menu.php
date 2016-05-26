@@ -32,7 +32,7 @@
 				$menu = new Menu();
 				$menu->name = $row['namamenu'];			
 				$menu->time = $row['waktu'];
-				$menu->amount = $row['jumlah'];
+				$menu->amount = $row['jumlahtersedia'];
 				$menu->emailC = $row['emailchef'];
 				$menu->description = $row['deskripsi'];
 				$menu->picture = $row['gambar'];
@@ -52,7 +52,7 @@
 					$menu = new Menu();
 					$menu->name = $row['namamenu'];
 					$menu->time = $row['waktu'];
-					$menu->amount = $row['jumlah'];
+					$menu->amount = $row['jumlahtersedia'];
 					$menu->emailC = $row['emailchef'];
 					$menu->description = $row['deskripsi'];
 					$menu->price = $row['harga'];
@@ -64,16 +64,16 @@
 		}
 
 		public static function daily_menu($date, $group, $sort) {
-			$result = DB::query("SELECT * FROM MENU_HARIAN MH, MENU M WHERE namamenu = nama AND DATE(waktu) = '$date' ORDER BY $group $sort");
+			$result = DB::query("SELECT DISTINCT MH.namamenu AS nama, MH.waktu, M.jumlahtersedia, MH.emailchef, M.deskripsi, M.harga, K.nama AS kategori FROM MENU_HARIAN MH, MENU M, Kategori K WHERE MH.namamenu = M.nama AND DATE(waktu) = '$date' AND M.kategori = K.kode ORDER BY $group $sort");
 			if($result == false || $result->rowCount() <= 0) {
 				 return null;				
 			} else {
 				$menus = array();
 				foreach ($result->fetchAll() as $row) {
 					$menu = new Menu();
-					$menu->name = $row['namamenu'];			
+					$menu->name = $row['nama'];			
 					$menu->time = $row['waktu'];
-					$menu->amount = $row['jumlah'];
+					$menu->amount = $row['jumlahtersedia'];
 					$menu->emailC = $row['emailchef'];
 					$menu->description = $row['deskripsi'];
 					$menu->price = $row['harga'];
@@ -94,7 +94,7 @@
 					$menu = new Menu();
 					$menu->name = $row['namamenu'];			
 					$menu->time = $row['waktu'];
-					$menu->amount = $row['jumlah'];
+					$menu->amount = $row['jumlahtersedia'];
 					$menu->emailC = $row['emailchef'];
 					$menu->description = $row['deskripsi'];
 					$menu->price = $row['harga'];

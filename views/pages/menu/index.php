@@ -12,14 +12,44 @@
 			<h5>List Menu</h5>
 				<small>Urutkan Berdasarkan :</small>
 					<form action="index.php?p=menu" method="POST">
+						<?php
+							$selectNama = '';
+							$selectHarga = '';
+							$selectKategori = '';
+							$selectAsc = '';
+							$selectDesc = '';
+
+							if(empty($_POST['group']) === false){
+								switch ($_POST['group']) {
+									case 'Nama':
+										$selectNama = 'selected';
+										break;
+									case 'Harga':
+										$selectHarga = 'selected';
+										break;
+									case 'Kategori':
+										$selectKategori = 'selected';
+										break;									
+								}
+
+								switch ($_POST['sort']) {
+									case 'ASC':
+										$selectAsc = 'selected';
+										break;
+									case 'DESC':
+										$selectDesc = 'selected';
+										break;															
+								}
+							}
+						?>
 						<select name="group" class="form-control">
-							<option val="nama">Nama</option>
-							<option val="harga">Harga</option>
-							<option val="kategori">Kategori</option>
+							<option <?php echo $selectNama; ?> val="nama">Nama</option>
+							<option <?php echo $selectHarga; ?> val="harga">Harga</option>
+							<option <?php echo $selectKategori; ?> val="kategori">Kategori</option>
 						</select>
 						<select name="sort" class="form-control" val="test">
-							<option val="asc">ASC</option>
-							<option val="desc">DESC</option>
+							<option <?php echo $selectAsc; ?> val="asc">ASC</option>
+							<option <?php echo $selectDesc; ?> val="desc">DESC</option>
 						</select>
 						<br>
 						<?php if (empty($_POST['date']) === false){ ?>
