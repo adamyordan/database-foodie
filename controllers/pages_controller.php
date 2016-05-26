@@ -49,8 +49,11 @@
 						'dmenus' => $dmenus
 						]);
 				} else {
+					$group = $_POST['group'];
+					$sort = $_POST['sort'];
+
 					$menus = Menu::all();
-					$dmenus = Menu::all();
+					$dmenus = Menu::allWS($group, $sort);
 					
 					View::render('pages/menu/index',[
 						'user' => $user, 

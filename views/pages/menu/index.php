@@ -32,18 +32,6 @@
 		}		
 	}
 
-	if(empty($_POST['date']) === true){
-		$_POST['date'] = date('d/m/Y');
-	}
-
-	if(empty($_POST['group']) === true){
-		$_POST['group'] = 'Nama';
-	}
-
-	if(empty($_POST['sort']) === true){
-		$_POST['sort'] = 'ASC';
-	}
-
 ?>
 <div class="col-md-3">
 	<?php require_once('views/partials/sidebar.php'); ?>
@@ -67,7 +55,7 @@
 							<option <?php echo $selectDesc; ?> val="desc">DESC</option>
 						</select>
 						<br>
-						<?php if (empty($_POST['date']) === false){ ?>
+						<?php if (isset($_POST['date'])){ ?>
 						<small>Tanggal : <input name="date" type="text" class="datePicker" value="<?php echo $_POST['date']; ?>"></small>
 						<?php } else { ?>
 						<small>Tanggal : <input name="date" type="text" class="datePicker" value="<?php echo date('d/m/Y'); ?>"></small>
