@@ -12,7 +12,7 @@
 
 		public static function login() {
 			if(!empty($_SESSION['login_user'])){
-				header('Location: index.php?p=look');
+				header('Location: ?p=look');
 			}
 			View::render('pages/login',[]);
 		}
@@ -140,7 +140,7 @@
 
 		private static function checkAuth() {
 			if(empty($_SESSION['login_user'])){
-				header('Location: index.php?p=login');
+				header('Location: ?p=login');
 			}
 			$login_user_email = $_SESSION['login_user'];
 			return User::find($login_user_email);			
@@ -150,7 +150,7 @@
 			foreach ($roles as $role) {
 				if ($user->job == $role) return;
 			}
-			header('Location: index.php?p=home');
+			header('Location: ?p=home');
 		}
 
 
