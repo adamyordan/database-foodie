@@ -47,8 +47,10 @@ public class Foodie {
 		createBahanBakuMenu(300);
 		createPembelianBahanBaku(300);
 		createPemesanan(250);
-		createMenuHarian(150);
+		createMenuHarian(200);
 		createPemesananMenuHarian(350);
+		
+		System.out.println("SET search_path TO FOODIE;");
 		
 		outputUsers();
 		outputModePembayaran();
@@ -196,7 +198,7 @@ public class Foodie {
 			// Stock unit always in kg
 			s.satuanStok = "kg";
 			// Assume initial stock lies in range [100,250]
-			s.stok = RandomGenerator.randomInteger(151) + 100;
+			s.stok = RandomGenerator.randomInteger(151) + 120;
 
 			s.pricePerKg = (RandomGenerator.randomInteger(20) + 15) * 1000;
 			
@@ -278,7 +280,7 @@ public class Foodie {
 			m.deskripsi = m.nama + " created with " + RandomGenerator.ingredient() + " tasted very " + RandomGenerator.chara();
 			m.gambar = m.nama.split(" ")[0] + "_" + m.nama.split(" ")[1] + ".jpg";
 			m.harga = (RandomGenerator.randomInteger(50) + 1) * 1000;
-			m.jumlah_tersedia = RandomGenerator.randomInteger(101) + 20;
+			m.jumlah_tersedia = RandomGenerator.randomInteger(101) + 40;
 			m.kategori = kategoris.get(RandomGenerator.randomInteger(kategoris.size())).kode;
 			menus.add(m);
 		}
@@ -289,7 +291,7 @@ public class Foodie {
 			MenuHarian mh = new MenuHarian();
 			mh.namaMenu = menus.get(RandomGenerator.randomInteger(menus.size())).nama;
 			mh.waktu = RandomGenerator.randomDate();
-			mh.jumlah = RandomGenerator.randomInteger(20) + 1;
+			mh.jumlah = RandomGenerator.randomInteger(30) + 6;
 			mh.email_chef = chefs.get(RandomGenerator.randomInteger(chefs.size())).email;
 			menuharians.add(mh);
 		}
@@ -310,7 +312,7 @@ public class Foodie {
 			pmh.nomorNota = p.no_nota;
 			pmh.namaMenu = mh.namaMenu;
 			pmh.waktu = mh.waktu;
-			pmh.jumlah = RandomGenerator.randomInteger(10) + 1;
+			pmh.jumlah = RandomGenerator.randomInteger(5) + 1;
 			pemesananmenuharians.add(pmh);
 			m = menuMap.get(mh.namaMenu);
 			p.total += pmh.jumlah * m.harga;
@@ -430,10 +432,10 @@ public class Foodie {
 			b.satuanPembelian = RandomGenerator.stock();
 			
 			if (b.satuanPembelian.equals("kg") || b.satuanPembelian.equals("lbs") || b.satuanPembelian.equals("hg")) {
-				b.jumlahPembelian = RandomGenerator.randomInteger(25) + 1;
+				b.jumlahPembelian = RandomGenerator.randomInteger(30) + 6;
 			}
 			else {
-				b.jumlahPembelian = RandomGenerator.randomInteger(100) + 1;
+				b.jumlahPembelian = RandomGenerator.randomInteger(200) + 51;
 			}
 			
 			// Determine price per unit (from pricePerKg attribute, then convert to the purchase unit)
