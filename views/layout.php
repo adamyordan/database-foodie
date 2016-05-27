@@ -10,13 +10,13 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/vendor/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/vendor/flat-ui.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/vendor/select2.min.css">
-	<link rel="stylesheet" type="text/css" href="resources/css/vendor/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/vendor/sweetalert2.min.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/core.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/order.css">
 	
     <script type="text/javascript" src="resources/js/vendor/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="resources/js/vendor/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript" src="resources/js/vendor/bootstrap.min.js"></script>
 	<script type="text/javascript" src="resources/js/vendor/select2.min.js"></script> 
 	<script type="text/javascript" src="resources/js/vendor/sweetalert2.min.js"></script>

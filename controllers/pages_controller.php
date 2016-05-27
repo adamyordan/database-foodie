@@ -35,7 +35,7 @@
 				if (empty($_POST['date']) === false){
 					$var = $_POST['date'];
 					$tgl = str_replace('/', '-', $var);
-					$date = date('Y-m-d', strtotime($tgl));
+					$date = date('Y-d-m', strtotime($tgl));
 
 					$group = $_POST['group'];
 					$sort = $_POST['sort'];
@@ -62,7 +62,7 @@
 						]);
 				}
 			} else {				
-					$_POST['date'] = date('d/m/Y');							
+					$_POST['date'] = date('m/d/Y');							
 					$_POST['group'] = 'Nama';								
 					$_POST['sort'] = 'ASC';				
 
