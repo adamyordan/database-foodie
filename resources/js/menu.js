@@ -7,5 +7,5 @@ $(document).ready (function () {
 		$(this).parent().addClass('active');
 	});
 
-	$('.datePicker').datepicker({ dateFormat: 'dd/mm/yy'});
+	$('.datePicker').datepicker({ dateFormat: 'dd/mm/yy',});
 });

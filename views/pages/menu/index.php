@@ -1,5 +1,5 @@
 
-<script type="text/javascript" src="resources/js/menu.js"></script>
+
 <?php
 	$selectNama = '';
 	$selectHarga = '';
@@ -107,3 +107,5 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript" src="resources/js/menu.js"></script>
